@@ -1,0 +1,124 @@
+.nav {
+  display: flex;
+  align-items: center;
+  height: auto;
+  width: 100%;
+}
+
+.fondo {
+  background-image: url("./images/fondo_nav.jpg");
+  width: 100%;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+.centrar-vertical {
+  justify-content: center;
+  align-items: center;
+}
+
+.relative {
+  position: relative;
+}
+
+.quantify {
+  font-family: quantify;
+}
+
+.cafe {
+  font-family: cafe;
+}
+
+.cream {
+  font-family: cream;
+}
+
+.info {
+  width: 50%;
+  max-width: 100%;
+  position: absolute;
+  bottom: 420px;
+  left: 10%;
+  z-index: 150;
+  color: white;
+}
+
+@media only screen and (max-width: 1010px) {
+  .info {
+    width: 100%;
+    position: static;
+    padding: 45px 25px;
+    text-align: center;
+    background: #000;
+  }
+}
+.info_botones {
+  position: absolute;
+  z-index: 150;
+  left: 10%;
+  bottom: 200px;
+  color: white;
+}
+@media only screen and (max-width: 1010px) {
+  .info_botones
+  {
+    position: static;
+    left: 0;
+    color: #000;
+    padding: 1%;
+  }
+}
+
+.contact {
+  width: 100%;
+  height: auto;
+  padding: 4%;
+  border: rgb(103, 117, 165) solid 2px;
+  margin-bottom: 1%;
+}
+
+.book {
+  width: 100%;
+  height: auto;
+  border: rgb(211, 123, 123) solid 2px;
+  padding: 4%;
+}
+
+.footer {
+  font-size: calc(0.5em + 0.5vw);
+  line-height: 1.5em;
+  width: 100%;
+}
+
+.scroll {
+  overflow: auto;
+  width: 100%;
+  height: 95vh;
+}
+
+.scroll::-webkit-scrollbar {
+  display: none;
+}
+
+@font-face {
+  font-family: cream;
+  src: url('./font/cream_cake.ttf');
+}
+
+@font-face {
+  font-family: quantify;
+  src: url('./font/quantify.ttf');
+}
+
+@font-face {
+  font-family: modern;
+  src: url('./font/modern.ttf');
+}
+
+@font-face {
+  font-family: cafe;
+  src: url('./font/cafe.ttf');
+}
