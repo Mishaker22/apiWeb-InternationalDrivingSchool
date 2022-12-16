@@ -1,3 +1,17 @@
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: #000;
+}
+.cardBody{
+ background-color: rgb(0, 0, 0) !important;
+}
+.cardContainer{
+  background-color: rgba(255, 255, 255, 0.651);
+}
+button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+  cursor: pointer;
+}
 .nav {
   display: flex;
   align-items: center;
@@ -36,6 +50,10 @@ a {
   font-family: cream;
 }
 
+.modern {
+  font-family: modern;
+}
+
 .info {
   width: 50%;
   max-width: 100%;
@@ -44,6 +62,7 @@ a {
   left: 10%;
   z-index: 150;
   color: white;
+
 }
 
 @media only screen and (max-width: 1010px) {
@@ -55,6 +74,7 @@ a {
     background: #000;
   }
 }
+
 .info_botones {
   position: absolute;
   z-index: 150;
@@ -62,13 +82,14 @@ a {
   bottom: 200px;
   color: white;
 }
+
 @media only screen and (max-width: 1010px) {
-  .info_botones
-  {
+  .info_botones {
     position: static;
     left: 0;
     color: #000;
     padding: 1%;
+    background-color: white;
   }
 }
 
@@ -91,18 +112,80 @@ a {
   font-size: calc(0.5em + 0.5vw);
   line-height: 1.5em;
   width: 100%;
+  margin-top: auto;
+  text-align: center;
+  border-top: rgba(150, 150, 150, 0.445) solid 1px;
+  background-color: rgb(19, 17, 17);
+  color: rgb(53, 53, 53);
+}
+
+.footer_top {
+  position: relative;
+  background-color: #000;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1010px) {
+  .footer_top {
+    height: auto;
+    width: 100uv;
+    background-image: url("./images/footer.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+@media only screen and (max-width: 1010px) {
+  .contact_info {
+    text-align: center;
+    margin: 0 auto;
+    color: white;
+  }
+}
+
+.contact_info {
+  width: 100%;
 }
 
 .scroll {
-  overflow: auto;
-  width: 100%;
-  height: 95vh;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  height: 400px;
 }
-
 .scroll::-webkit-scrollbar {
-  display: none;
+  width: 7px;
+  height: 7px;
+  background-color: #53303071;
 }
 
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #7e0f0f9a;
+}
+@media only screen and (max-width: 1110px) {
+  .scroll {
+    overflow-x:hidden;
+    overflow-y:hidden;
+    height: auto;
+  }
+}
+
+#contenedorServicios {
+  text-align: center;
+  height: auto;
+}
+
+@media only screen and (max-width: 1110px) {
+  #contenedorServicios {
+    flex: 0 0 auto;
+    width: 100%
+  }
+}
+@media only screen and (max-width: 1110px) {
+  #carruselServicios {
+    flex: 0 0 auto;
+    width: 100%
+  }
+}
 @font-face {
   font-family: cream;
   src: url('./font/cream_cake.ttf');

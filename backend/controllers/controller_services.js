@@ -4,6 +4,12 @@ const servicio = require('../models/model_service');
 //Ver la lista de productos
 exports.getServices = async(req, res, next) => {
     const services = await servicio.find();
+    if (!services) {
+        return res.status(404).json({
+            succes:false,
+            error:true
+        })  
+    }
     res.status(200).json({
         succes: true,
         cantidad: services.length,

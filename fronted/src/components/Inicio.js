@@ -3,10 +3,12 @@ import slideUno from "../images/carrusel1.jpg"
 import slideDos from "../images/carrusel2.jpg"
 import slideTres from "../images/carrusel3.jpg"
 import { Link } from 'react-router-dom';
+import MetaData from './layout/metadata';
 
 export const Inicio = () => {
     return (
         <Fragment>
+            <MetaData title={"Home"}></MetaData>
             <div class="home">
                 <div id="carouselExampleIndicators" className="carousel slide carousel-fade" data-bs-ride="carousel">
                     <div className="carousel-indicators">
@@ -34,7 +36,7 @@ export const Inicio = () => {
                         <span className="visually-hidden">Next</span>
                     </button>
                 </div>
-                <div className='position-absolute w-100'>
+                <div className='position-relative w-100'>
                     <div class="info">
                         <h1 className="quantify">INTERNATIONAL <br></br> DRIVING ACADEMY</h1>
                         <h5 class="cafe">We Prepared you for Written and Driving test.</h5>
