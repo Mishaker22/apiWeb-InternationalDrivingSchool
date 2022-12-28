@@ -6,7 +6,12 @@ const usuarioShema=new mongoose.Schema({
     nombre:{
         type: String,
         required:[true, "Por favor ingrese el nombre"], 
-        maxlength:[120, "El nombre no puede exceder de 120 caracteres"]
+        maxlength:[50, "El nombre no puede exceder de 120 caracteres"]
+    }, 
+    apellido:{
+        type: String,
+        required:[true, "Por favor ingrese el apellido"], 
+        maxlength:[50, "El apellido no puede exceder de 120 caracteres"]
     }, 
     email:{
         type:String ,
@@ -20,6 +25,10 @@ const usuarioShema=new mongoose.Schema({
         minlength:[8, "Tu contraseña debe tener minimo 8 caracteres"], 
         select:false
     },
+    genero:{
+        type:String,
+        required:[true, "Por favor favor seleccione su genero"]
+    },
     role:{
         type :String,
         default: 'user'
@@ -31,6 +40,13 @@ const usuarioShema=new mongoose.Schema({
 
     resetPasswordToken:String,
     resetPasswordExpire:Date
+})
+usuarioShema.pre("save", async function(next){
+    if(!this.isModified("password"))
+    {
+        next()
+    }
+    this.password=await bcrypt.hash(this.password,10)
 })
 
 module.exports=mongoose.model("auth", usuarioShema)
