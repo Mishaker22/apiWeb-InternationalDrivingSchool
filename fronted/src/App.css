@@ -1,6 +1,6 @@
-body {
+body{
   overflow-x: hidden;
-  min-height: 100vh;
+  min-height:100vh ;
   background-color: #000;
 }
 .cardBody{
@@ -17,6 +17,9 @@ button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disab
   align-items: center;
   height: auto;
   width: 100%;
+}
+.sidebar-wrapper{
+  min-height:70vh ;
 }
 
 .fondo {
