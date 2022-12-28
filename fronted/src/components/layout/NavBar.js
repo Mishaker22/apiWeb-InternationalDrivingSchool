@@ -27,11 +27,12 @@ export const NavBar = () => {
                                 <a className="nav-link">CONTACT US</a>
                             </li>
                             <li className="nav-item dropdown">
-                                <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Panel de control</a>
+                                <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Control Panel</a>
                                 <ul className="dropdown-menu">
-                                    <li><a className="dropdown-item" href="#">Action</a></li>
-                                    <li><a className="dropdown-item" href="#">Another action</a></li>
-                                    <li><a className="dropdown-item" href="#">Something else here</a></li>
+                                    <li><a className="dropdown-item" href="/admin/dashboard">Adm. Servicios</a></li>
+                                    <li><a className="dropdown-item" href="#">Preinscripciones</a></li>
+                                    <li><a className="dropdown-item" href="#">mi cuenta</a></li>
+                                    <li><a className="dropdown-item" href="#">Cerrar Sesion</a></li>
                                 </ul>
                             </li>
                         </ul>
