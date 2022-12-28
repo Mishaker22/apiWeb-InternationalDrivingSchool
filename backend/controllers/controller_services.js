@@ -1,52 +1,46 @@
+const catchAsyncErrors = require('../middleware/catchAsyncErrors');
 const servicio = require('../models/model_service');
+const ErrorHandler = require('../utils/error_handler');
 //const fetch =(url)=>import('node-fetch').then(({default:fetch})=>fetch(url));
 
 //Ver la lista de productos
-exports.getServices = async(req, res, next) => {
+exports.getServices = catchAsyncErrors( async(req, res, next) => {
     const services = await servicio.find();
     if (!services) {
-        return res.status(404).json({
-            succes:false,
-            error:true
-        })  
+        return next(new ErrorHandler("Servicio No encontrado", 404)) 
     }
     res.status(200).json({
         succes: true,
         cantidad: services.length,
         services
     })
-}
+})
 //Buscar un servicio por id
-exports.getServiceById = async (req, res, next) => {
-    const service = await servicio.findById(req.params.id)
+exports.getServiceById = catchAsyncErrors(async (req, res, next) => {
+    const service =  await servicio.findById(req.params.id)
     if (!service) {
-        return res.status(404).json({
-            succes:false,
-            message:"No encontramos ese servicio"
-        })
+        return next(new ErrorHandler("Servicio No encontrado", 404))
+
     } res.status(200).json({
         succes: true,
         message: "A continuacion puede ver la informacion de tu servicio",
         service
     })
-}
+})
 //Agregar servicio nuevo
-exports.newService = async (req, res, next) => {
+exports.newService = catchAsyncErrors( async (req, res, next) => {
     const service = await servicio.create(req.body);
 
     res.status(201).json({
         succes: true,
         service
     })
-}
+})
 //Actualizar un servicio
-exports.updateService = async (req, res,next) => {
+exports.updateService = catchAsyncErrors( async (req, res,next) => {
     let service = await servicio.findById(req.params.id)
     if (!service) {
-        return res.status(404).json({
-            succes:false,
-            message:"No encontramos ese servicio"
-        })
+        return next(new ErrorHandler("Servicio No encontrado", 404))
     }
     service = await servicio.findByIdAndUpdate(req.params.id, req.body, {
         new: true,
@@ -57,22 +51,19 @@ exports.updateService = async (req, res,next) => {
         message: "Servicio actualizado correctamente",
         service
     })
-}
+})
 //Eliminar servicio
-exports.deleteService = async (req, res) => {
+exports.deleteService = catchAsyncErrors( async (req, res) => {
     const service = await servicio.findById(req.params.id)
     if (!service) {
-        return res.status(404).json({
-            succes:false,
-            message:"No encontramos ese servicio"
-        })
+        return next(new ErrorHandler("Servicio No encontrado", 404))
     }
     await service.remove();
     res.status(200).json({
         succes: true,
         message: "servicio eliminado correctamente"
     })
-}
+})
 //FETCH
 //Ver todos los productos
 /*

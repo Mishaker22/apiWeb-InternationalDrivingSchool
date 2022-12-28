@@ -17,7 +17,7 @@ export const Services = () => {
             return alert.error(error)
         }
         dispatch(getServices());
-        alert.success("Ok")
+        
     }, [dispatch])
 
     return (
@@ -32,7 +32,7 @@ export const Services = () => {
                             <div id='carruselServicios' className='col-12 col-md-7'>
                                 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
                                     <div class="carousel-inner">
-                                        <div class="carousel-item active">
+                                        <div class="carousel-item active"  data-bs-interval="5000">
                                             <img src={cs_2} class="d-block w-100" alt="..."></img>
                                         </div>
                                         <div class="carousel-item">
