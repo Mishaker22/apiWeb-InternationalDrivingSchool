@@ -1,3 +1,18 @@
+th{
+  color: red;
+}
+td{
+  color: white;
+}
+.page-link{
+  background-color: rgb(37, 41, 41) !important; 
+  font-size: small;
+  font-family: cafe;
+  border: #000 solid 2px;
+}
+.page-item{
+  background-color: rgb(0, 0, 0) !important; 
+}
 body{
   overflow-x: hidden;
   min-height:100vh ;

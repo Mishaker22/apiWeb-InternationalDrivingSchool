@@ -1,16 +1,21 @@
 import React, { Fragment, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { MDBDataTable } from 'mdbreact'
+
+import MetaData from '../layout/metadata'
+import Sidebar from './sidebar'
+
 import { useDispatch, useSelector } from 'react-redux'
 import { getServices } from '../../actions/services_actions'
 import { useAlert } from 'react-alert'
-import MetaData from '../layout/metadata'
-import Sidebar from './sidebar'
-import { MDBDataTable } from 'mdbreact'
 
 export const ServiceList = () => {
-    const { loading, services, error } = useSelector(state => state.services)
+
     const alert = useAlert();
     const dispatch = useDispatch();
+
+    const { loading, services, error } = useSelector(state => state.services)
+
     useEffect(() => {
         if (error) {
             return alert.error(error)
@@ -35,7 +40,11 @@ export const ServiceList = () => {
                 {
                     label: " Productos",
                     field: "productos"
-                }
+                },
+                {
+                    label: 'Acciones',
+                    field: 'acciones',
+                },
             ],
             rows: []
         }
@@ -44,7 +53,17 @@ export const ServiceList = () => {
             data.rows.push({
                 nombre: service.nombre,
                 descripcion: service.descripcion,
-                productos: service.producto.length
+                productos: service.producto.length,
+                acciones: <Fragment>
+                    <Link to={`/service/${service._id}`} className="btn btn-primary  ">
+                        <i class="bi bi-eye"></i>
+                    </Link><Link to={`#`} className="btn btn-info">
+                        <i class="bi bi-pen"></i>
+                    </Link>
+                    <button className="btn btn-danger ">
+                        <i class="bi bi-trash3"></i>
+                    </button>
+                </Fragment>
             })
         })
 

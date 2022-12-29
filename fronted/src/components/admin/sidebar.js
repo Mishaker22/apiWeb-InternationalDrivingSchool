@@ -11,7 +11,7 @@ export const Sidebar = () => {
 
                 <ul className='list-unstyled components p-2 '>
                     <li className='mb-3 ms-2'>
-                        <Link to={"/"}><i class="bi bi-window-stack"></i> Administracion</Link>
+                        <Link to={"/admin/dashboard"}><i class="bi bi-window-stack"></i> Administracion</Link>
                     </li>
                     <li className='mb-3 ms-2'>
                         <a href='#serviceSubMenu' data-bs-toggle="collapse" aria-expanded="false" className='dropdown-toggle'>
