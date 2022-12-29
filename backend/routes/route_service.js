@@ -2,8 +2,10 @@ const express=require('express');
 const router=express.Router();
 
 const{getServices, newService, getServiceById, updateService, deleteService}=require('../controllers/controller_services');
+const { isAuthenticatedUser, authorizeRoles } = require('../middleware/auth');
 
-router.route('/listar').get(getServices)
+//probemos autenticacion
+router.route('/listar').get(isAuthenticatedUser,authorizeRoles("admin"), getServices)
 router.route('/nuevo').post(newService)
 router.route('/get/:id').get(getServiceById)
 router.route('/get/:id').put(updateService)

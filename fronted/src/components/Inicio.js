@@ -39,8 +39,9 @@ export const Inicio = () => {
                 <div className='position-relative w-100'>
                     <div class="info">
                         <h1 className="quantify">INTERNATIONAL <br></br> DRIVING ACADEMY</h1>
-                        <h5 class="cafe">We Prepared you for Written and Driving test.</h5>
+                        <h5 class="cafe">Building safe drivers</h5>
                         <hr></hr>
+                        <p className='text-start'><i class="bi bi-caret-right-fill text-danger"></i> We Prepared you for Written and Driving test.</p>
                         <p className='text-start'><i class="bi bi-caret-right-fill text-danger"></i> Cars available for road test.</p>
                         <p className='text-start'><i class="bi bi-caret-right-fill text-danger"></i> Pick-up and drop-off.</p>
                     </div>
