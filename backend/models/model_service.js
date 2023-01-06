@@ -34,6 +34,11 @@ const esquemaServicio = new miEsquema({
         type: String,
         required: [true, "Debe ingresar un link"]
     },
+    user:{
+        type: mongoose.Schema.ObjectId,
+        ref:"User",
+        required: true
+    },
     fechaCreacion: {
         type: Date,
         default: Date.now
