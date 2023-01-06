@@ -13,7 +13,7 @@ export const Footer = () => {
                             <div className='col-12 col-md-4'>
                                 <span className='text-white'><b>Email</b><br></br></span>
                                 <a className='text-white'>
-                                    <span className="align-middle vertical-alignment"><i class="bi bi-envelope-at"></i> InternationalDrivingAcademy@gmail.com   </span>
+                                    <span className="align-middle vertical-alignment"><i class="bi bi-envelope-at"></i> Interdrivingschool@hotmail.com </span>
                                 </a>
                             </div>
                             <div className='col-12 col-md-2'>

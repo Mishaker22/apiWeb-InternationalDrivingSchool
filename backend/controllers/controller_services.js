@@ -29,8 +29,8 @@ exports.getServiceById = catchAsyncErrors(async (req, res, next) => {
 })
 //Agregar servicio nuevo
 exports.newService = catchAsyncErrors( async (req, res, next) => {
+    req.body.user=req.user.id;
     const service = await servicio.create(req.body);
-
     res.status(201).json({
         succes: true,
         service
