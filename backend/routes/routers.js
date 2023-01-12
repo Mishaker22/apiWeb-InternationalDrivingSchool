@@ -7,4 +7,7 @@ router.use("/services",rutaServicio);
 const rutaUsuario=require('./route_auth');
 router.use("/user",rutaUsuario);
 
+const rutaPreinscripcion=require('./route_preinscription');
+router.use("/preinscription",rutaPreinscripcion);
+
 module.exports=router;
