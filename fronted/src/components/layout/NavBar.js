@@ -6,7 +6,7 @@ export const NavBar = () => {
             <nav className="navbar navbar-expand-md navbar-ligth  fondo border-5 border-bottom border-dark" aria-label="Fourth navbar example">
                 <div className="container-fluid">
                     <div className='navbar-brand'>
-                        <img className='img-fluid' src={logo} alt="International Academy"></img>
+                        <img className='img-fluid ms-5' src={logo} alt="International Academy"></img>
                     </div>
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
@@ -25,6 +25,9 @@ export const NavBar = () => {
                             </li>
                             <li className="nav-item">
                                 <a className="nav-link">CONTACT US</a>
+                            </li>
+                            <li className="nav-item">
+                                <a href='/login' className="nav-link">LOGIN</a>
                             </li>
                             <li className="nav-item dropdown">
                                 <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Control Panel</a>

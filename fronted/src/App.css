@@ -82,6 +82,10 @@ a {
   color: white;
 
 }
+.backgroundMega
+{
+  background-image: url("./images/Megatron.jpg");
+}
 
 @media only screen and (max-width: 1010px) {
   .info {

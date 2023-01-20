@@ -9,6 +9,8 @@ import { ServiceDetails } from './components/services/service_details';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Dashboard } from './components/admin/dashboard';
 import { ServiceList } from './components/admin/serviceList';
+import { PreinscriptionList } from './components/admin/preinscription_list';
+import { Login } from './components/users/login';
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path='/service/:id' element={<ServiceDetails/>}></Route>
           <Route path='/admin/dashboard' element={<Dashboard></Dashboard>}></Route>
           <Route path='/admin/listServices' element={<ServiceList></ServiceList>}></Route>
+          <Route path='/admin/listPreinscriptions' element={<PreinscriptionList></PreinscriptionList>}></Route>
+          <Route path='/login' element={<Login></Login>}></Route>
         </Routes>
         <Footer></Footer>
       </div>
