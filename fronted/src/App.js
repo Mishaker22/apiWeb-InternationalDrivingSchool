@@ -11,6 +11,7 @@ import { Dashboard } from './components/admin/dashboard';
 import { ServiceList } from './components/admin/serviceList';
 import { PreinscriptionList } from './components/admin/preinscription_list';
 import { Login } from './components/users/login';
+import { Register } from './components/users/register';
 
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/admin/listServices' element={<ServiceList></ServiceList>}></Route>
           <Route path='/admin/listPreinscriptions' element={<PreinscriptionList></PreinscriptionList>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
+          <Route path='/register' element={<Register></Register>}></Route>
         </Routes>
         <Footer></Footer>
       </div>

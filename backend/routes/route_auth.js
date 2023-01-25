@@ -6,7 +6,7 @@ const{registroUsuario, loginUser, logOut, forgotPass, resetPassword, getUserProf
 const { isAuthenticatedUser, authorizeRoles } = require('../middleware/auth');
 
 router.route('/register').post(registroUsuario)
-router.route('/login').get(loginUser)
+router.route('/login').post(loginUser)
 router.route('/logout').get(isAuthenticatedUser, logOut)
 router.route('/forgotPassword').post(forgotPass)
 router.route('/resetPassword/:token').post(resetPassword)

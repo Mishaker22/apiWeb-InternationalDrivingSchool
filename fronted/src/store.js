@@ -8,7 +8,7 @@ import { preinscriptionsReducer } from './reducer/preinscriptions_reducer';
 const reducer= combineReducers ({
     services:servicesReducer,
     serviceDetails:serviceDetailsReducer,
-    authUser: authReducer,
+    auth: authReducer,
     preinscriptions: preinscriptionsReducer
 })
 
