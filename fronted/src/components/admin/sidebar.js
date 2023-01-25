@@ -28,7 +28,7 @@ export const Sidebar = () => {
                         </ul>
                     </li>
                     <li className='mb-3 ms-2'>
-                        <Link to={"/"}><i class="bi bi-clipboard-check-fill"></i> Preinscripciones</Link>
+                        <Link to={"/admin/listPreinscriptions"}><i class="bi bi-clipboard-check-fill"></i> Preinscripciones</Link>
                     </li>
                     <li className='mb-3 ms-2'>
                         <Link to={"/"}><i class="bi bi-people"></i> Usuarios</Link>

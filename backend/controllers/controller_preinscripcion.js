@@ -2,6 +2,7 @@ const preinscripcion=require("../models/preinscripcion")
 //const Servic =require("../models/model_service")
 const catchAsyncErrors=require("../middleware/catchAsyncErrors");
 const ErrorHandler = require("../utils/error_handler");
+const APIFeatures = require("../utils/api_features");
 
 //crear nueva preinscripcion
 exports.newReservation= catchAsyncErrors(async(req,res,next)=>{
@@ -41,15 +42,27 @@ exports.getOneReservation=catchAsyncErrors(async(req,res,next)=>{
 //Admin
 //Ver todas las ordenes (usuario logueado)
 exports.getAllOrders=catchAsyncErrors(async(req,res,next)=>{
-    const orders=await preinscripcion.find();
+    const resPerPage=10;
+    const preinscripcionCount= await preinscripcion.countDocuments();
 
-    let cantTotal=orders.length;
+    const apiFeatures= new APIFeatures(preinscripcion.find(),req.query)
+    .search()
+    .filter();
+
+    let preinscriptions= await apiFeatures.query;
+    let filteredPreinscriptionCount= preinscriptions.length
+    apiFeatures.pagination(resPerPage)
+
+    preinscriptions=await apiFeatures.query.clone()
 
     res.status(200).json({
-        succes:true,
-        cantTotal,
-        orders
+        succes: true,
+        preinscripcionCount,
+        resPerPage,
+        filteredPreinscriptionCount,
+        preinscriptions,
     })
+
 })
 //Editar una preinscripcion (admin)
 exports.updateOrder=catchAsyncErrors(async(req,res,next)=>{
