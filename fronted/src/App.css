@@ -1,40 +1,52 @@
-th{
+th {
   color: red;
 }
-td{
+
+td {
   color: white;
 }
-.page-link{
-  background-color: rgb(37, 41, 41) !important; 
+
+.page-link {
+  background-color: rgb(37, 41, 41) !important;
   font-size: small;
   font-family: cafe;
   border: #000 solid 2px;
 }
-.page-item{
-  background-color: rgb(0, 0, 0) !important; 
+
+.page-item {
+  background-color: rgb(0, 0, 0) !important;
 }
-body{
+
+body {
   overflow-x: hidden;
-  min-height:100vh ;
+  min-height: 100vh;
   background-color: #000;
 }
-.cardBody{
- background-color: rgb(0, 0, 0) !important;
+
+.cardBody {
+  background-color: rgb(0, 0, 0) !important;
 }
-.cardContainer{
+
+.cardContainer {
   background-color: rgba(255, 255, 255, 0.651);
 }
-button:not(:disabled), [type="button"]:not(:disabled), [type="reset"]:not(:disabled), [type="submit"]:not(:disabled) {
+
+button:not(:disabled),
+[type="button"]:not(:disabled),
+[type="reset"]:not(:disabled),
+[type="submit"]:not(:disabled) {
   cursor: pointer;
 }
+
 .nav {
   display: flex;
   align-items: center;
   height: auto;
   width: 100%;
 }
-.sidebar-wrapper{
-  min-height:70vh ;
+
+.sidebar-wrapper {
+  min-height: 70vh;
 }
 
 .fondo {
@@ -82,23 +94,48 @@ a {
   color: white;
 
 }
-.backgroundMega
-{
+
+.backgroundMega {
   background-image: url("./images/Megatron.jpg");
 }
-.backgroundRegister
-{
+
+.backgroundRegister {
   background-image: url("./images/fondo_register.jpg");
   width: 100%;
   height: 100%;
   background-size: cover;
-    background-repeat: no-repeat;
-}
-.cardRegister
-{
-  height: 40vh;
+  background-repeat: no-repeat;
 }
 
+.backgroundProfile {
+  background-image: url("./images/fondo_form.jpg");
+  width: 100%;
+  height: 80vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.backgroundForm {
+  background-image: url("./images/fondo_formu.jpeg");
+  width: 100%;
+  height: 85vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+@media only screen and (max-width: 1010px) {
+  .backgroundForm, .backgroundProfile {
+    height: 100%;
+  }
+}
+.cardRegister {
+  height: 40vh;
+}
+.cardTransparent{
+  height: 100%;
+  margin-top: 5%;
+  margin-left: 0%;
+  width: 400px;
+  background-color: rgba(0,0,0,0.5) !important;
+  }
 @media only screen and (max-width: 1010px) {
   .info {
     width: 100%;
@@ -182,10 +219,11 @@ a {
 }
 
 .scroll {
-  overflow-y:scroll;
-  overflow-x:hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
   height: 400px;
 }
+
 .scroll::-webkit-scrollbar {
   width: 7px;
   height: 7px;
@@ -195,10 +233,11 @@ a {
 .scroll::-webkit-scrollbar-thumb {
   background-color: #7e0f0f9a;
 }
+
 @media only screen and (max-width: 1110px) {
   .scroll {
-    overflow-x:hidden;
-    overflow-y:hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
     height: auto;
   }
 }
@@ -214,12 +253,14 @@ a {
     width: 100%
   }
 }
+
 @media only screen and (max-width: 1110px) {
   #carruselServicios {
     flex: 0 0 auto;
     width: 100%
   }
 }
+
 @font-face {
   font-family: cream;
   src: url('./font/cream_cake.ttf');

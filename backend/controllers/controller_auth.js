@@ -73,7 +73,7 @@ exports.forgotPass = catchAsyncErrors(async (req, res, next) => {
     await user.save({ validateBeforeSave: false })
 
     //Crear una url para resetear la contraseña
-    const resetUrl = `${req.protocol}://${req.get("host")}/api/user/resetPassword/${resetToken}`
+    const resetUrl = `${req.protocol}://${req.get("host")}/resetPassword/${resetToken}`
 
     const mensaje = `\n Hi!! ${user.nombre} \n\n we have received a request to change the password of International Driving Academy 
      \n\n Click here to change your password: \n ${resetUrl}
@@ -138,7 +138,7 @@ exports.getUserProfile = catchAsyncErrors(async (req, res, next) => {
     })
 })
 
-//update controller (usuario logueado)
+//update password controller (usuario logueado)
 exports.updatePassword = catchAsyncErrors(async (req, res, next) => {
     const user = await User.findById(req.user.id).select("+password");
 
