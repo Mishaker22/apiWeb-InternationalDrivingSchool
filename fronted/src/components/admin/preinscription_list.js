@@ -6,7 +6,7 @@ import MetaData from '../layout/metadata'
 import Sidebar from './sidebar'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getPreinscriptions } from '../../actions/preinscriptions_actions'
+import { getAdminOrders, getPreinscriptions } from '../../actions/preinscriptions_actions'
 import { useAlert } from 'react-alert'
 
 
@@ -21,7 +21,7 @@ export const PreinscriptionList = () => {
         if (error) {
             return alert.error(error)
         }
-        dispatch(getPreinscriptions());
+        dispatch(getAdminOrders());
 
     }, [dispatch, alert, error])
 

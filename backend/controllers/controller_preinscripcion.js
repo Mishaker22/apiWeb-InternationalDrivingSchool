@@ -64,6 +64,16 @@ exports.getAllOrders=catchAsyncErrors(async(req,res,next)=>{
     })
 
 })
+//Preinscripciones Lista Admin
+exports.getAdminAllOrders=catchAsyncErrors(async(req,res,next)=>{
+  
+    const preinscriptions=await preinscripcion.find()
+
+    res.status(200).json({ 
+        preinscriptions,
+    })
+
+}) 
 //Editar una preinscripcion (admin)
 exports.updateOrder=catchAsyncErrors(async(req,res,next)=>{
     const order=await preinscripcion.findById(req.params.id)

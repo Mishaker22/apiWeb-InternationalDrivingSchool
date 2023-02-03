@@ -6,6 +6,43 @@ td {
   color: white;
 }
 
+.text-animado {
+  width: 300px;
+  height: 55px;
+  color: white;
+  border: #000 solid 2px;
+  font-size: 50px;
+  overflow: hidden;
+  display: flex;
+  line-height: 50px;
+
+}
+
+.ul-t {
+  list-style: none;
+  padding-left: 10px;
+  animation: cambiar 7s infinite;
+}
+
+@keyframes cambiar {
+  0% {
+    margin-top: 0;
+  }
+
+  20% {
+    margin-top: 0;
+  }
+
+  25% {
+    margin-top: -50px;
+  }
+
+  50% {
+    margin-top: -50px;
+  }
+
+}
+
 .page-link {
   background-color: rgb(37, 41, 41) !important;
   font-size: small;
@@ -44,6 +81,11 @@ button:not(:disabled),
   height: auto;
   width: 100%;
 }
+nav a.active{
+  text-decoration: none;
+  font-weight: bold;
+  color: #af0647;
+}
 
 .sidebar-wrapper {
   min-height: 70vh;
@@ -55,8 +97,18 @@ button:not(:disabled),
 }
 
 a {
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
+}
+.LinkInfo {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+@media only screen and (max-width: 1010px) {
+  .LinkInfo {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+  }
 }
 
 .centrar-vertical {
@@ -114,6 +166,7 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
 .backgroundForm {
   background-image: url("./images/fondo_formu.jpeg");
   width: 100%;
@@ -121,21 +174,209 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.backgroundCall {
+  background-image: url("./images/back_call.png");
+  width: 100%;
+  height: 85vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.backBubble{
+  background: #0c192c;
+  min-height: 30vh; 
+  width: 100%; 
+  position: relative;
+  overflow: hidden;
+}
+.bubbles{
+position: relative;
+display: flex;
+}
+.bubbles span{
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: #af0647;
+  margin: 0 4px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 10px #af064744, 
+  0 0 50px #af0647,
+  0 0 50px #af0647;
+  animation: bubbles 15s linear infinite;
+  animation-duration: calc(125s/ var(--i));
+}
+.bubbles span:nth-child(even)
+{
+  background: #e51fff;
+  box-shadow: 0 0 0 10px #e51fff44, 
+  0 0 50px #e51fff,
+  0 0 50px #e51fff;
+}
+@keyframes bubbles{
+  0%
+  {
+    transform: translateY(100vh) scale(0);
+  }
+  100%
+  {
+    transform: translateY(-10vh) scale(1);
+  }
+}
+
 @media only screen and (max-width: 1010px) {
-  .backgroundForm, .backgroundProfile {
+
+  .backgroundForm,
+  .backgroundProfile,
+  .backgroundCall {
     height: 100%;
   }
 }
+
 .cardRegister {
   height: 40vh;
 }
-.cardTransparent{
+
+.cardTransparent {
   height: 100%;
   margin-top: 5%;
   margin-left: 0%;
   width: 400px;
-  background-color: rgba(0,0,0,0.5) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.cardTransparentTwo {
+  background-color: rgba(0, 0, 0, 0.664) !important;
+}
+.formu{
+  position: relative;
+  width: 100%;
+}
+.formu input{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+  font-size: 1em;
+  transition: 0.5s;
+}
+.formu textarea{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background-color: #1d2b3a;
+  border-radius: 5px;
+  outline: none;
+  color: white;
+  font-size: 1em;
+  transition: 0.5s;
+}
+.formu span{
+  position: absolute;
+  left: 0;
+  padding: 10px;
+  pointer-events: none;
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.25);
+  text-transform: uppercase;
+  transition: 0.5s;
+}
+.formu input:valid ~ span,
+.formu input:focus ~ span{
+  color: #00dfca;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background: #1d2b3a;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.formu textarea:valid ~ span,
+.formu textarea:focus ~ span{
+  color: #1d2b3a;
+  transform: translateX(10px) translateY(-7px);
+  font-size: 0.65em;
+  padding: 0 10px;
+  background:#00dfc4;
+  border-left: 1px solid #00dfc4;
+  border-right: 1px solid #00dfc4;
+  letter-spacing: 0.2em;
+}
+.formu:nth-child(2) input:valid ~ span,
+.formu:nth-child(2) input:focus ~ span{
+  background: #00dfc4;
+  color: #1d2b3a;
+  border-radius: 2px;
+}
+.formu textarea:valid,
+.formu textarea:focus
+{
+  border: 1px solid #00dfc4;
+  color: white;
+  border-radius: 2px;
+}
+.formu input:valid,
+.formu input:focus
+{
+  border: 1px solid #00dfc4;
+  color: white;
+  border-radius: 2px;
+}
+.fondoFormu{
+  background-color: #1d2b3a;
+}
+.box{
+  width: 75%;
+  height: 100%;
+  position: relative;
+  background-color: #1c1c1c;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.box::before{
+  content: '';
+  position:absolute;
+  top: -50%;
+  left: -50%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(0deg,transparent, #df001e,#df001e);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+}
+.box::after{
+  content: '';
+  position:absolute;
+  top: -50%;
+  left: -50%;
+  width: 75%;
+  height: 100%;
+  background: linear-gradient(0deg,transparent, #df001e,#df001e);
+  transform-origin: bottom right;
+  animation: animate 6s linear infinite;
+  animation-delay: -3s;
+}
+
+@keyframes animate{
+  0%{
+    transform: rotate(0deg);
   }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+.formcontain{
+  position: relative;
+  inset: 1px;
+  border-radius: 8px;
+  background: #28292d;
+  z-index: 10;
+}
 @media only screen and (max-width: 1010px) {
   .info {
     width: 100%;
@@ -151,14 +392,14 @@ a {
   z-index: 150;
   left: 10%;
   bottom: 200px;
-  color: white;
+  color: white !important;
 }
 
 @media only screen and (max-width: 1010px) {
   .info_botones {
     position: static;
     left: 0;
-    color: #000;
+    color: #000 !important;
     padding: 1%;
     background-color: white;
   }
@@ -223,6 +464,11 @@ a {
   overflow-x: hidden;
   height: 400px;
 }
+.scrollService {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 350px;
+}
 
 .scroll::-webkit-scrollbar {
   width: 7px;
@@ -232,6 +478,15 @@ a {
 
 .scroll::-webkit-scrollbar-thumb {
   background-color: #7e0f0f9a;
+}
+.scrollService::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background-color: #ffffff;
+}
+
+.scrollService::-webkit-scrollbar-thumb {
+  background-color: #ff06069a;
 }
 
 @media only screen and (max-width: 1110px) {
@@ -258,6 +513,34 @@ a {
   #carruselServicios {
     flex: 0 0 auto;
     width: 100%
+  }
+}
+.containText{
+  padding-left: 4px;
+  margin: auto;
+  display: table;
+  background: #0c192c;
+  border: 1px solid #af0647;
+}
+.containText h1{
+  color: #ffffff;
+  position: relative;
+  font-family: monospace;
+  font-size: 2.5em;
+}
+h1 span{
+  position: absolute;
+  right: 0;
+  width: 0;
+  background: #0c192c;
+  border-left: 1px solid black;
+  animation: maquina 5s infinite alternate steps(10);
+}
+@keyframes maquina{
+  from{
+    width: 100%;
+  }to{
+    width: 0;
   }
 }
 

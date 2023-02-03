@@ -4,7 +4,10 @@ import{
     ALL_PREINSCRIPTIONS_REQUEST,
     ALL_PREINSCRIPTIONS_SUCCES,
     ALL_PREINSCRIPTIONS_FAIL,
-    CLEAR_ERRORS
+    CLEAR_ERRORS,
+    ADMIN_ORDERS_REQUEST,
+    ADMIN_ORDERS_SUCCESS,
+    ADMIN_ORDERS_FAIL
 } from '../constants/preinscription_constant';
 
 //dispatch como promesa
@@ -22,6 +25,21 @@ export const getPreinscriptions=()=> async(dispatch)=>{
     }catch(error){
         dispatch({
             type: ALL_PREINSCRIPTIONS_FAIL,
+            payload:error.response.data.message
+        })
+    }
+}
+export const getAdminOrders=()=>async(dispatch)=>{
+    try {
+        dispatch({type: ADMIN_ORDERS_REQUEST})
+        const {data} =await axios.get('/api/preinscription/admin/orderList')
+        dispatch({
+            type:ADMIN_ORDERS_SUCCESS,
+            payload:data
+        })
+    } catch (error) {
+        dispatch({
+            type: ADMIN_ORDERS_FAIL,
             payload:error.response.data.message
         })
     }

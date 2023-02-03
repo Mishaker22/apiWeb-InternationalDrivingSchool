@@ -81,7 +81,6 @@ export const Register = () => {
                                                                     <input type="email" id="email_field" className="form-control" name='email'
                                                                         value={email} onChange={(e) => setEmail(e.target.value)} />
                                                                 </div>
-
                                                             </div>
                                                             <div className='col-md-6'>
                                                                 <div className='form-group mb-4'>
