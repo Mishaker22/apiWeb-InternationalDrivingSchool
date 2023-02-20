@@ -12,6 +12,8 @@ export const UpdateProfile = () => {
     const [nombre, setNombre] = useState("")
     const [apellido, setApellido] = useState("")
     const [genero, setGenero] = useState("")
+    const [avatar, setAvatar] = useState("");
+    const [avatarPreview, setAvatarPreview] = useState("")
     const alert = useAlert();
     const dispatch = useDispatch();
 
@@ -29,6 +31,7 @@ export const UpdateProfile = () => {
             setNombre(user.nombre);
             setApellido(user.apellido);
             setGenero(user.genero)
+            setAvatarPreview(user.avatar.url)
         }
 
         if (error) {
@@ -53,11 +56,23 @@ export const UpdateProfile = () => {
         const formData = new FormData();
         formData.set("nombre", nombre);
         formData.set("apellido", apellido);
-        formData.set("genero", genero)
+        formData.set("genero", genero);
+        formData.set("avatar", avatar);
 
         dispatch(updateProfile(formData))
     }
+    const onChange = e => {
+        const reader = new FileReader();
 
+        reader.onload = () => {
+            if (reader.readyState === 2) {
+                setAvatarPreview(reader.result)
+                setAvatar(reader.result)
+            }
+        }
+        reader.readAsDataURL(e.target.files[0])
+
+    }
 
     return (
         <Fragment>
@@ -69,14 +84,24 @@ export const UpdateProfile = () => {
                     <div className='backgroundProfile pt-5'>
                         <div className='container container-fluid'>
                             <div className='row d-flex justify-content-center align-items-center  '>
-                                <div class="col col-lg-8 mb-4 mb-lg-0">
+                                <div class="col col-lg-9 mb-4 mb-lg-0">
                                     <div class="card mb-3 rounded-3" >
                                         <form onSubmit={submitHandler}>
                                             <div class="row g-0">
-                                                <div class="col-md-4 backgroundMega text-center text-white">
-                                                    <h3 className='m-4'>AVATAR</h3>
+                                                <div class="col-md-5 colorProfileCard text-center text-white">
+                                                    <div className=' row d-flex justify-content-center align-items-center mt-5 mb-5'>
+                                                        <h2 className='cafe text-white my-4'>Avatar</h2>
+                                                        <div className='boxColorUpdateProfile'>
+                                                            <div className='containtUpdateProfile mb-5'>
+                                                                <b></b>
+                                                                {user ? (
+                                                                    <img className="" src={avatarPreview} alt={user && user.nombre} />
+                                                                ) : !loading}
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-6">
+                                                <div class="col-md-7">
                                                     <div class="card-body p-4">
                                                         <h3 className='cafe'><b>Update Profile</b></h3>
                                                         <hr class="mt-0 mb-4"></hr>
@@ -99,7 +124,35 @@ export const UpdateProfile = () => {
                                                                 ))}
                                                             </select>
                                                         </div>
+                                                        <div className='form-group'>
+                                                            <label htmlFor='avatar_upload'>Avatar</label>
+                                                            <div className='d-flex align-items-center'>
+                                                                <div className='col-md-2'>
+                                                                    <figure className='avatar avatar-nav'>
+                                                                        {user ? (
+                                                                            <img className="avatar me-3 item-rtl rounded-circle"
+                                                                                src={avatarPreview}
+                                                                                alt={user && user.nombre} />
+                                                                        ) : !loading}
+                                                                    </figure>
 
+                                                                </div>
+                                                                <div className='col-md-10'>
+                                                                    <div className='input-group'>
+                                                                        <input
+                                                                            type='file'
+                                                                            name='avatar'
+                                                                            className='form-control'
+                                                                            id='customFile'
+                                                                            accept="images/*"
+                                                                            aria-describedby="inputGroupFileAddon04" aria-label="Upload"
+                                                                            onChange={onChange}
+                                                                        />
+                                                                        <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04"><i class="bi bi-upload"></i></button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <hr></hr>
                                                         <button type="submit" className="btn btn-outline-danger "
                                                             disabled={loading ? true : false} >Save changes</button>
