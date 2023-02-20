@@ -2,25 +2,24 @@ const mongoose= require("mongoose");
 const validator = require("validator")
 
 const preinscripcionSchema= mongoose.Schema({
-    nombre:{
-        type: String,
-        required:[true, "Por favor ingrese su nombre completo"], 
-        maxlength:[50, "El nombre no puede exceder de 120 caracteres"]
-    }, 
     numeroId:{
         type:Number ,
         required:[true, "por favor ingrese el numero de identificacion"],
         unique: true,
     }, 
-    email:{
+    direccion:{
         type:String ,
-        required:[true, "por favor ingrese el correo electronico"],
-        unique: true,
-        validate:[validator.isEmail, "Por favor ingrese  un email valido"]
+        required:[true, "por favor ingrese su direccion"],
     }, 
     telefono:{
         type:String,
-        required:true,
+        required:[true, "Por favor ingrese su telefono"],
+    },
+    user:
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "auth"
     },
     service:[{
         nombre:{
@@ -40,7 +39,7 @@ const preinscripcionSchema= mongoose.Schema({
     estado:{
         type:String,
         required:true,
-        default: "Sin reserva"
+        default: "Sin reservar fecha"
     }
 
 })

@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import logo from '../../images/logo_completo.png'
-import { NavLink } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { logout } from '../../actions/user_actions'
 
@@ -53,8 +53,19 @@ export const NavBar = () => {
                             {/*Si estoy logueada*/}
                             {user ? (
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><span>
-                                        {user && user.nombre} </span></a>
+                                    
+                                        <NavLink className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <figure className='avatar avatar-nav'>
+                                                <img
+                                                    src={user.avatar && user.avatar.url}
+                                                    alt={user && user.nombre}
+                                                    className="rounded-circle"></img>
+                                            </figure>
+                                            <span>
+                                                {user && user.nombre}
+                                            </span>
+                                        </NavLink>
+                                    
                                     <ul className="dropdown-menu">
                                         {user && user.role === "admin" && (
                                             <li><a className="dropdown-item" href="/admin/dashboard">Adm. Servicios</a></li>

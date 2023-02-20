@@ -31,6 +31,16 @@ const usuarioShema=new mongoose.Schema({
         type:String,
         required:[true, "Por favor favor seleccione su genero"]
     },
+    avatar:{
+        public_id:{
+            type:String,
+            require:true
+        },
+        url:{
+            type:String,
+            require:true
+        }
+    },
     role:{
         type :String,
         default: 'user'

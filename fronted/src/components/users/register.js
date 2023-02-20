@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import MetaData from '../layout/metadata'
 import registerfondo from '../../images/register.png'
+import avatarD from '../../images/avatar.png'
 import { useAlert } from 'react-alert'
 import { useDispatch, useSelector } from 'react-redux'
 import { register, clearErrors } from '../../actions/user_actions'
@@ -14,6 +15,8 @@ export const Register = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [genero, setGenero] = useState('');
+    const [avatar, setAvatar] = useState("");
+    const [avatarPreview, setAvatarPreview] = useState(avatarD);
 
     const generos = [
         "Otro",
@@ -44,8 +47,22 @@ export const Register = () => {
         formData.set('email', email);
         formData.set('password', password);
         formData.set('genero', genero);
+        formData.set('avatar', avatar)
 
         dispatch(register(formData))
+    }
+    const onChange = e => {
+        if (e.target.name === "avatar") {
+            const reader = new FileReader();
+
+            reader.onload = () => {
+                if (reader.readyState === 2) {
+                    setAvatarPreview(reader.result)
+                    setAvatar(reader.result)
+                }
+            }
+            reader.readAsDataURL(e.target.files[0])
+        }
     }
 
     return (
@@ -103,6 +120,35 @@ export const Register = () => {
                                                                             <option key={genero} value={genero}>{genero} </option>
                                                                         ))}
                                                                     </select>
+                                                                </div>
+                                                            </div>
+                                                            <div className='col-md-12'>
+                                                                <div className='form-group'>
+                                                                    <label htmlFor='avatar_upload'>Avatar</label>
+                                                                    <div className='d-flex align-items-center'>
+                                                                        <div className='col-md-2'>
+                                                                            <figure className='avatar me-3 item-rtl'>
+                                                                                <img
+                                                                                    src={avatarPreview}
+                                                                                    className="rounded-circle"
+                                                                                    alt="Vista Previa del Avatar"></img>
+                                                                            </figure>
+                                                                        </div>
+                                                                        <div className='col-md-10'>
+                                                                            <div className='input-group'>
+                                                                                <input
+                                                                                    type='file'
+                                                                                    name='avatar'
+                                                                                    className='form-control'
+                                                                                    id='customFile'
+                                                                                    accept="images/*"
+                                                                                    aria-describedby="inputGroupFileAddon04" aria-label="Upload"
+                                                                                    onChange={onChange}
+                                                                                />
+                                                                                <button class="btn btn-outline-secondary" type="button" id="inputGroupFileAddon04">Upload</button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>

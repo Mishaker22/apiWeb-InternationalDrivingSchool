@@ -4,6 +4,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const tokenEnviado = require("../utils/jwtToken");
 const sendEmail = require("../utils/send_email");
 const crypto = require("crypto")
+const cloudinary=require("cloudinary")
 
 
 //Registrar un nuevo usuario /api/user/register
@@ -11,11 +12,21 @@ const crypto = require("crypto")
 exports.registroUsuario = catchAsyncErrors(async (req, res, next) => {
     const { nombre, apellido, email, password, genero } = req.body;
 
+    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: "avatars",
+        width:240,
+        crop:"scale"
+    })
+
     const user = await User.create({
         nombre,
         apellido,
         email,
         password,
+        avatar:{
+            public_id:result.public_id,
+            url:result.secure_url
+        },
         genero
     })
     const token = user.getJwtToken();
@@ -167,7 +178,7 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
         apellido: req.body.apellido,
         genero: req.body.email
     }
-
+    //update avatar pendiente
     const user = await User.findByIdAndUpdate(req.user.id, nuevaData,
         {
             new: true,
