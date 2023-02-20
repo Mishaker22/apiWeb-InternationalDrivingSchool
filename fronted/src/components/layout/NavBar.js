@@ -1,18 +1,18 @@
 import React, { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import logo from '../../images/logo_completo.png'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { logout } from '../../actions/user_actions'
 
 export const NavBar = () => {
 
     const alert = useAlert();
-    const dispatch= useDispatch();
+    const dispatch = useDispatch();
 
     const { user, loading } = useSelector(state => state.auth)
 
-    const logoutHandler=()=>{
+    const logoutHandler = () => {
         dispatch(logout());
         alert.success("logOut")
     }
@@ -31,33 +31,52 @@ export const NavBar = () => {
                     <div className="collapse navbar-collapse" id="navbarsExample04">
                         <ul className="navbar-nav ms-auto me-5 mb-2 mb-md-0 cafe">
                             <li className="nav-item">
-                                <a className="nav-link active" aria-current="page" href="/"><b>HOME</b></a>
+                                <span>
+                                    <NavLink to={"/"} className="nav-link">HOME</NavLink>
+                                </span>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#">ABOUT US</a>
+                                <span>
+                                    <NavLink to={"/abouts_us"} className="nav-link">ABOUT US</NavLink>
+                                </span>
                             </li>
                             <li className="nav-item">
-                                <a href='/services' className="nav-link">SERVICES</a>
+                                <span>
+                                    <NavLink to={"/services"} className="nav-link">SERVICES</NavLink>
+                                </span>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link">CONTACT US</a>
+                                <span>
+                                    <NavLink to={"/contact_us"} className="nav-link">CONCTACT</NavLink>
+                                </span>
                             </li>
                             {/*Si estoy logueada*/}
                             {user ? (
                                 <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false"><span>
-                                        {user && user.nombre} </span></a>
+                                    
+                                        <NavLink className="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <figure className='avatar avatar-nav'>
+                                                <img
+                                                    src={user.avatar && user.avatar.url}
+                                                    alt={user && user.nombre}
+                                                    className="rounded-circle"></img>
+                                            </figure>
+                                            <span>
+                                                {user && user.nombre}
+                                            </span>
+                                        </NavLink>
+                                    
                                     <ul className="dropdown-menu">
-                                        {user && user.role === "admin" &&(
+                                        {user && user.role === "admin" && (
                                             <li><a className="dropdown-item" href="/admin/dashboard">Adm. Servicios</a></li>
                                         )}
-                                        
+
                                         <li><a className="dropdown-item" href="#">Preinscripciones</a></li>
                                         <li><a className="dropdown-item" href="/MyProfile">Profile</a></li>
-                                        <li><Link className="dropdown-item" to={"/"} onClick={logoutHandler}>Log out</Link></li>
+                                        <li><NavLink className="dropdown-item" to={"/"} onClick={logoutHandler}>Log out</NavLink></li>
                                     </ul>
                                 </li>
-                            ):!loading && <Link to={"login"} className="btn ms-4 border border-dark-2" id='login_btn'>LOGIN</Link>}
+                            ) : !loading && <span><NavLink to={"login"} className=" nav-link" id='login_btn'>LOGIN</NavLink></span>}
 
                         </ul>
                     </div>

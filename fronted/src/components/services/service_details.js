@@ -27,28 +27,30 @@ export const ServiceDetails = () => {
       </div> : (
         <Fragment>
           <Metadata title={service.nombre}></Metadata>
-          <div className='container container-fluid'>
-            <div className='d-flex  justify-content-center align-items-center'>
-              <div className='border border-danger w-50 mt-5 mb-5'>
-                <h1 className='text-danger text-center quantify'><b>Services Details</b></h1>
+          <div className='backgroundCall'>
+            <div className='container container-fluid'>
+              <div className='d-flex  justify-content-center align-items-center'>
+                <div className='border border-danger mt-5 mb-5  text-danger p-2 quantify'>
+                  <h1><b>Services Details</b></h1>
+                </div>
               </div>
-            </div>
-            <div className='d-flex  justify-content-center align-items-center h-50'>
-              <div className='border border-danger w-75 mt-1 mb-5  p-2'>
-                <div className='container'>
-                  <div className='scroll row d-flex  justify-content-center align-items-center'>
-                    {service.producto && service.producto.map(product => (
-                      <div key={product.public_id} className="col-12 col-md-4 h-100" id='detalles_services'>
-                        <div className="card rounded bg-danger m-1 h-100 ">
-                          <h2 className='text-white modern card-header text-center'>Servicio # {product.public_id} </h2>
-                          <div className="card-body cardBody d-flex flex-column justify-content-center align-items-center">
-                            <p className='text-secondary cafe' > {product.descripcion_producto} </p>
-                            <h5 className='text-white'> <hr></hr>${product.precio} <hr></hr> </h5>
-                            <Link to={`/preinscription`} id="button" type='button' className="btn btn-outline-danger w-50 ms-10 text-white cafe"> Book Now <i class="bi bi-clipboard-check"></i></Link>
+              <div className='d-flex  justify-content-center align-items-center h-50'>
+                <div className='p-1 box mb-3'>
+                  <div className='formcontain'>
+                    <div className='row scrollService '>
+                      {service.producto && service.producto.map(product => (
+                        <div key={product.public_id} className="col-12 col-md-6 " id='detalles_services'>
+                          <div className="card rounded bg-danger  h-100">
+                            <h4 className='text-white quantify card-header text-center'>Option {product.public_id} </h4>
+                            <div className="card-body cardBody d-flex flex-column justify-content-center align-items-center">
+                              <p className='text-secondary cafe' > {product.descripcion_producto} </p>
+                              <h5 className='text-white'> <hr></hr>${product.precio} <hr></hr> </h5>
+                              <Link to={`/preinscription`} id="button" type='button' className="btn btn-outline-danger w-50 ms-10 text-white cafe"> Book Now <i class="bi bi-clipboard-check"></i></Link>
+                            </div>
                           </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>

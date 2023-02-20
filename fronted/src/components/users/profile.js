@@ -16,18 +16,29 @@ export const Profile = () => {
                         <div className='container container-fluid pt-3 '>
                             <h2 className='quantify text-white text-center '>PROFILE</h2>
                             <div className='row d-flex justify-content-center align-items-center mt-5 '>
-                                <div class="col col-lg-9 mb-4 mb-lg-0">
-                                    <div class="card mb-3 rounded-3" >
+                                <div class="col-9 ,mb-5 ">
+                                    <div class="card rounded-3" >
                                         <div class="row g-0">
-                                            <div class="col-md-4 backgroundMega text-center text-white">
-                                                <h3 className='m-4'>AVATAR</h3>
-                                                <p>{user.nombre}</p>
-                                                <p>{user.apellido} </p>
-                                                <Link to={"/MyProfile/update"} id="edit_profile" className='btn btn-danger btn-block my-5 cafe' > EDIT PROFILE</Link>
+                                            <div class="col-md-4 colorProfileCard text-center text-white">
+                                                <div className=' row d-flex justify-content-center align-items-center'>
+                                                    <div className='boxColorProfileCard mt-4'>
+                                                        <div className='contentProfile'>
+                                                            {user ? (
+                                                                <img className="" src={user.avatar && user.avatar.url} alt={user && user.nombre} />
+                                                            ) : !loading}
+                                                        </div>
+                                                    </div>
+                                                    
+                                                    <span className='mt-3'><h4 className='modern'>{user.nombre}</h4></span>
+                                                    <span><h4 className='modern'> {user.apellido}</h4> </span>
+                                                    <span>
+                                                        <Link to={"/MyProfile/update"} id="edit_profile" className='btn btn-danger btn-block my-4 cafe' > EDIT PROFILE</Link>
+                                                    </span>
+                                                </div>
                                             </div>
                                             <div class="col-md-8">
-                                                <div class="card-body p-4">
-                                                    <h3 className='cafe'><b>Information</b></h3>
+                                                <div class="card-body p-4 mx-4">
+                                                    <h3 className='cafe mt-4'><b>Information</b></h3>
                                                     <hr class="mt-0 mb-4"></hr>
                                                     <div class="row pt-1">
                                                         <div class="col-8 mb-3">

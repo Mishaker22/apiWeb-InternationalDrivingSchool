@@ -4,6 +4,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const tokenEnviado = require("../utils/jwtToken");
 const sendEmail = require("../utils/send_email");
 const crypto = require("crypto")
+const cloudinary=require("cloudinary")
 
 
 //Registrar un nuevo usuario /api/user/register
@@ -11,11 +12,21 @@ const crypto = require("crypto")
 exports.registroUsuario = catchAsyncErrors(async (req, res, next) => {
     const { nombre, apellido, email, password, genero } = req.body;
 
+    const result = await cloudinary.v2.uploader.upload(req.body.avatar, {
+        folder: "avatars",
+        width:240,
+        crop:"scale"
+    })
+
     const user = await User.create({
         nombre,
         apellido,
         email,
         password,
+        avatar:{
+            public_id:result.public_id,
+            url:result.secure_url
+        },
         genero
     })
     const token = user.getJwtToken();
@@ -165,9 +176,25 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     const nuevaData = {
         nombre: req.body.nombre,
         apellido: req.body.apellido,
-        genero: req.body.email
+        genero: req.body.genero
     }
+    //updata Avatar: 
+    if (req.body.avatar !==""){
+        const user= await User.findById(req.user.id)
+        const image_id= user.avatar.public_id;
+        const res= await cloudinary.v2.uploader.destroy(image_id);
 
+        const result= await cloudinary.v2.uploader.upload(req.body.avatar, {
+            folder: "avatars",
+            width: 240,
+            crop: "scale"
+        })
+
+        nuevaData.avatar={
+            public_id: result.public_id,
+            url: result.secure_url
+        }
+    }
     const user = await User.findByIdAndUpdate(req.user.id, nuevaData,
         {
             new: true,

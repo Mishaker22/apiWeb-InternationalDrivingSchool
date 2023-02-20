@@ -20,6 +20,8 @@ import { UpdateProfile } from './components/users/updateProfile';
 import { UpdatePassword } from './components/users/updatePassword';
 import { ForgotPassword } from './components/users/forgotPassword';
 import { ResetPassword } from './components/users/resetPassword';
+import { Contact_us } from './components/contact_us';
+import { AboutUs } from './components/abouts_us';
 
 
 function App() {
@@ -36,6 +38,8 @@ function App() {
           <Route path='/home' element={<Inicio></Inicio>}></Route>
           <Route path='/services' element={<Services></Services>}></Route>
           <Route path='/service/:id' element={<ServiceDetails/>}></Route>
+          <Route path='/contact_us' element={<Contact_us></Contact_us>}></Route>
+          <Route path='/abouts_us' element={<AboutUs></AboutUs>}></Route>
           <Route path='/login' element={<Login></Login>}></Route>
           <Route path='/register' element={<Register></Register>}></Route>
           <Route path='/MyProfile' element={<Profile></Profile>}></Route>

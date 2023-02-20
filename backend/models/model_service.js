@@ -30,10 +30,6 @@ const esquemaServicio = new miEsquema({
             },
         }
     ],
-    condado: {
-        type: String,
-        required: true
-    },
     url: {
         type: String,
         required: [true, "Debe ingresar un link"]

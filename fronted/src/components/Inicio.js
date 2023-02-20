@@ -48,16 +48,20 @@ export const Inicio = () => {
                     <div class='info_botones'>
                         <div className='row'>
                             <div className='col-12 col-md-6'>
-                                <div class="contact">
-                                    <h3 className='p-1 cream'><i class="bi bi-headset"></i> We contact you</h3>
-                                    <p className='ms-4 text-start'>We provide the information you need</p>
-                                </div>
+                                <Link className='LinkInfo' to={"/contact_us"}>
+                                    <div class="contact">
+                                        <h3 className='p-1 cream'><i class="bi bi-headset"></i> We contact you</h3>
+                                        <p className='ms-4 text-start'>We provide the information you need</p>
+                                    </div>
+                                </Link>
                             </div>
                             <div className='col-12 col-md-6'>
-                                <div class="book">
-                                    <h3 className='p-1 cream'><i class="bi bi-clipboard2-check"></i> Book Now</h3>
-                                    <p className='ms-4 text-start'>Choose the class that suits your needs</p>
-                                </div>
+                                <Link to={"/services"} className='LinkInfo'>
+                                    <div class="book">
+                                        <h3 className='p-1 cream'><i class="bi bi-clipboard2-check"></i> Book Now</h3>
+                                        <p className='ms-4 text-start'>Choose the class that suits your needs</p>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
