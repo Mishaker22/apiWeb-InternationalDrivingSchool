@@ -29,28 +29,32 @@ export const ServiceDetails = () => {
           <Metadata title={service.nombre}></Metadata>
           <div className='backgroundCall'>
             <div className='container container-fluid'>
-              <div className='d-flex  justify-content-center align-items-center'>
-                <div className='border border-danger mt-5 mb-5  text-danger p-2 quantify'>
-                  <h1><b>Services Details</b></h1>
-                </div>
-              </div>
-              <div className='d-flex  justify-content-center align-items-center h-50'>
-                <div className='p-1 box mb-3'>
-                  <div className='formcontain'>
-                    <div className='row scrollService '>
-                      {service.producto && service.producto.map(product => (
-                        <div key={product.public_id} className="col-12 col-md-6 " id='detalles_services'>
-                          <div className="card rounded bg-danger  h-100">
-                            <h4 className='text-white quantify card-header text-center'>Option {product.public_id} </h4>
-                            <div className="card-body cardBody d-flex flex-column justify-content-center align-items-center">
-                              <p className='text-secondary cafe' > {product.descripcion_producto} </p>
-                              <h5 className='text-white'> <hr></hr>${product.precio} <hr></hr> </h5>
-                              <Link to={`/preinscription`} id="button" type='button' className="btn btn-outline-danger w-50 ms-10 text-white cafe"> Book Now <i class="bi bi-clipboard-check"></i></Link>
+              <div className='row'>
+                <div className='col-12 col-lg-12'>
+                  <div className='row d-flex  justify-content-center align-items-center h-50'>
+                    <div className='text-center text-danger quantify mt-4'>
+                      <h1><b>Services Details</b></h1>
+                    </div>
+                    {service.producto && service.producto.map(product => (
+                      <div key={product.public_id} className="col-12 col-md-4 " id='detalles_services'>
+                        <div className="containerListServices">
+                          <div className='cardS flex-column'>
+                            <div className='content'>
+                              <div className='text'>
+                                <h4 className='text-center quantify'>Option {product.public_id} </h4>
+                                <p className='text-white text-center'> {product.descripcion_producto} </p>
+                                <h5 className='text-white text-center'> <hr></hr>${product.precio} <hr></hr> </h5>
+                              </div>
+                            </div>
+                            <div className='linkServices'>
+                              <Link to={`/preinscription`} id="button" type='button'
+                                className="btn btn-outline-danger ms-10 text-white cafe"> Book Now
+                                <i class="bi bi-clipboard-check"></i></Link>
                             </div>
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

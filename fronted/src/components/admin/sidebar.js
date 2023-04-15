@@ -22,7 +22,7 @@ export const Sidebar = () => {
                                 <Link to={"/admin/listServices"} className="text-success"><i class="bi bi-card-list"></i> Lista de servicios </Link>
                             </li>
                             <li className=' ms-2 mt-3'>
-                                <Link to={"/"} className="text-success"><i class="bi bi-plus-circle-fill"></i> Crear servicio </Link>
+                                <Link to={"/admin/newService"} className="text-success"><i class="bi bi-plus-circle-fill"></i> Crear servicio </Link>
                             </li>
 
                         </ul>

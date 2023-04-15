@@ -1,11 +1,20 @@
 th {
   color: red;
+  padding: 3rem;
 }
 
 td {
   color: white;
+  padding: 3rem;
 }
-
+thead{
+  background-color: #130005;
+  border-bottom: solid 5px #000000;
+}
+tr:hover td{
+  background-color: #29000a;
+  color: rgb(255, 255, 255);
+}
 /* Avatar */
 .avatar {
   display: inline-block;
@@ -170,8 +179,8 @@ a {
 
 }
 
-.backgroundMega {
-  background-image: url("./images/Megatron.jpg");
+.backgroundGray {
+  background: #333;
 }
 
 .backgroundRegister {
@@ -197,13 +206,89 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
 }
-
+.backgroundFormus
+{
+  background-image: url("./images/back_forms.jpg");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 .backgroundCall {
   background-image: url("./images/back_call.png");
   width: 100%;
-  height: 85vh;
+  height: 100%;
   background-size: cover;
   background-repeat: no-repeat;
+}
+.backgroundMega
+{
+  background-image: url("./images/Megatron.jpg");
+}
+.colorService
+{
+  background: #000000;
+  border-radius: 8px;
+  z-index: 99;
+}
+.containMessage
+{
+  padding: 3rem;
+}
+.containMessage h2{
+  color: #df0000;
+  font-family: quantify;
+  opacity: 0.8;
+  transition: 0.5s;
+}
+.containMessage h4{
+  margin-top: 2rem;
+  color: #c9b3bb;
+  font-family: cafe;
+  opacity: 0.8;
+  font-size: medium;
+}
+.containMessage:hover h4{
+  opacity: 1;
+  font-size: large;
+}
+.containMessage:hover h2{
+  opacity: 1;
+  font-weight: 100;
+  color: #ff0000;
+}
+.containMessage p{
+  margin-top: 2rem;
+  color: #f7f5f5;
+  font-family: cafe;
+  opacity: 0.5;
+  transition: 0.5s;
+  margin-bottom: 3.5rem;
+}
+.containMessage:hover p
+{
+  margin-top: 2rem;
+  color: #f7f5f5;
+  font-family: cafe;
+  opacity: 1;
+  font-size: large;
+}
+.containMessage span{
+  color: #ffffff;
+  font-family: modern;
+  font-size: 1.5rem;
+  
+}
+.containMessage:hover span{
+  color: rgb(197, 83, 83);
+  opacity: 1;
+}
+.txtServices{
+  color: #ffffff;
+  margin: 2rem;
+  font-family: quantify;
+  background-color: #292929;
+  border: #000 solid 2px;
 }
 .colorProfileCard
 {
@@ -316,7 +401,7 @@ a {
 }
 .backBubble{
   background: #0c192c;
-  min-height: 30vh; 
+  min-height: 20vh; 
   width: 100%; 
   position: relative;
   overflow: hidden;
@@ -336,7 +421,7 @@ display: flex;
   0 0 50px #af0647,
   0 0 50px #af0647;
   animation: bubbles 15s linear infinite;
-  animation-duration: calc(125s/ var(--i));
+  animation-duration: calc(145s/ var(--i));
 }
 .bubbles span:nth-child(even)
 {
@@ -666,6 +751,246 @@ h1 span{
   background: #0c192c;
   border-left: 1px solid black;
   animation: maquina 5s infinite alternate steps(10);
+}
+.containerServices{
+  position: relative;
+  display: flex;
+  padding: 80px 40px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 80px;
+}
+.cardServices{
+  position: relative;
+  width: 20rem;
+  height: 6rem;
+  background: #a18181;
+  transition: 0.5s;
+}
+.cardServices:hover{
+  height: 21rem;
+}
+.cardServices .lines{
+  inset: 0;
+  overflow: hidden;
+  position: absolute;
+  background: #000;
+}
+.cardServices .lines::before
+{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 25rem;
+  height: 5rem;
+  background: linear-gradient(transparent, #ff0000, #ff0000,#ff0000,transparent );
+  animation: animateLines 4s linear infinite;
+  animation-play-state: paused;
+}
+.cardServices:hover .lines::before{
+  animation-play-state: running;
+}
+@keyframes animateLines {
+  0%
+  {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100%
+  {
+    transform:translate(-50%, -50%)  rotate(360deg)
+  }
+}
+.cardServices .lines::after{
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background-color: #292929;
+}
+.cardServices .imgServices{
+  position: absolute !important;
+  top: -60px;
+  left: 50%;
+  width:6rem;
+  height: 6rem;
+  z-index: 10;
+  transform: translateX(-50%);
+  background: #000;
+  transition: 0.5s;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cardServices:hover .imgServices
+{
+  top: 10px;
+  width: 7rem;
+  height: 7rem;
+}
+.cardServices .imgServices::before
+{
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10rem;
+  height: 5rem;
+  background: linear-gradient(transparent,#ff3c7b,#ff3c7b,#ff3c7b,transparent);
+  animation: animateLines2 6s linear infinite;
+  animation-play-state: paused;
+}
+.cardServices:hover .imgServices::before
+{
+  animation-play-state: running;
+}
+@keyframes animateLines2 {
+  0%
+  {
+    transform: translate(-50%,-50%)rotate(360deg);
+  }
+  100%
+  {
+    transform: translate(-50%,-50%)rotate(0deg);
+  }
+}
+.cardServices .imgServices::after
+{
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: #292929;
+}
+.cardServices .imgServices img{
+  position: absolute;
+  width: 80px;
+  z-index: 1;
+  filter: invert(1);
+  opacity: 0.5;
+  transition: 0.5s;
+}
+.cardServices:hover .imgServices img
+{
+  opacity: 1;
+}
+.cardServices .contentServices{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+}
+.cardServices .contentServices .details
+{
+  padding: 30px 20px;
+  text-align: center;
+  width: 100%;
+  transition: 0.5s;
+  transform: translateY(15px)
+}
+.cardServices:hover .contentServices .details
+{
+  transform: translateY(110px);
+}
+.cardServices .contentServices .details h2{
+  font-family: modern;
+  color: #c9b3bb;
+}
+.cardServices .contentServices .details p{
+  color: white;
+  opacity: 0;
+  transition: 0.5s;
+}
+.cardServices:hover .contentServices .details p
+{
+  opacity: 1;
+}
+.containerListServices{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 40px 0;
+}
+.containerListServices .cardS{
+  position: relative;
+  width: 19rem;
+  height: 21rem;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 5px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+.containerListServices .cardS .content
+{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0.5;
+  transition: 0.5s;
+  padding: 0.5rem;
+  color: white;
+}
+.containerListServices .cardS:hover .content
+{
+  opacity: 1;
+}
+.containerListServices .cardS .content .text h4
+{
+  margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+}
+.containerListServices .cardS:hover .content .text h4
+{
+  color: #df001e;
+  font-family: quantify;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.containerListServices .cardS:hover .content .text p
+{
+  color: white;
+}
+.containerListServices .cardS .linkServices
+{
+  margin: 0 10px;
+  transform: translateY(40px);
+  transition: 0.5s;
+  opacity: 0;
+}
+.containerListServices .cardS:hover .linkServices
+{
+  transform: translateY(0px);
+  opacity: 1;
+}
+.containerListServices .cardS:hover .linkServices a{
+  width: 10rem;
+}
+.textBlack
+{
+  color: #000;
+}
+.carouselAbout{
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #000;
 }
 @keyframes maquina{
   from{

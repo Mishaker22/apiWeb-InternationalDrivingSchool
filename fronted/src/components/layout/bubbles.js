@@ -1,11 +1,7 @@
 import React, { Fragment } from 'react'
 
 export const Bubbles = () => {
-    const Bubbless = () => {
-        const buble = {
 
-        }
-    }
     return (
         <Fragment>
             <div className='backBubble'>
@@ -14,6 +10,7 @@ export const Bubbles = () => {
                         <h1>About Us..<span>&#160;</span></h1>
                     </div>
                 </div>
+
                 <div className='bubbles'>
                     <span style={{ '--i': 10 }}></span>
                     <span style={{ '--i': 12 }}></span>

@@ -6,7 +6,7 @@ import MetaData from '../layout/metadata'
 import Sidebar from './sidebar'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getAdminOrders, getPreinscriptions } from '../../actions/preinscriptions_actions'
+import { getAdminOrders } from '../../actions/preinscriptions_actions'
 import { useAlert } from 'react-alert'
 
 

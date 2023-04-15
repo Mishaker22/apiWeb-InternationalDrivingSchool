@@ -30,10 +30,6 @@ const esquemaServicio = new miEsquema({
             },
         }
     ],
-    url: {
-        type: String,
-        required: [true, "Debe ingresar un link"]
-    },
     user:{
         type: mongoose.Schema.ObjectId,
         ref:"User",
