@@ -22,6 +22,10 @@ import { ForgotPassword } from './components/users/forgotPassword';
 import { ResetPassword } from './components/users/resetPassword';
 import { Contact_us } from './components/contact_us';
 import { AboutUs } from './components/abouts_us';
+import { NewService } from './components/admin/service_new';
+import { UpdateService } from './components/admin/updateService';
+import { Subcategorie_new } from './components/admin/subcategorie_new';
+import { UpdateProduct } from './components/admin/updateProduct';
 
 
 function App() {
@@ -51,6 +55,10 @@ function App() {
           <Route path='/admin/dashboard' element={<ProtectedRoutes isAdmin={true}><Dashboard></Dashboard></ProtectedRoutes>}></Route>
           <Route path='/admin/listServices' element={<ProtectedRoutes isAdmin={true}><ServiceList></ServiceList></ProtectedRoutes>}></Route>
           <Route path='/admin/listPreinscriptions' element={<ProtectedRoutes isAdmin={true}><PreinscriptionList></PreinscriptionList></ProtectedRoutes>}></Route>
+          <Route path='/admin/newService' element={<ProtectedRoutes isAdmin={true}><NewService></NewService></ProtectedRoutes>}></Route>
+          <Route path='/admin/updateService/:id'element={<ProtectedRoutes isAdmin={true}><UpdateService></UpdateService></ProtectedRoutes>}></Route>
+          <Route path='/admin/createSubcategorie/:id'element={<ProtectedRoutes isAdmin={true}><Subcategorie_new></Subcategorie_new></ProtectedRoutes>}></Route>
+          <Route path='/admin/updateProduct/:id'element={<ProtectedRoutes isAdmin={true}><UpdateProduct></UpdateProduct></ProtectedRoutes>}></Route>
         </Routes>
         <Footer></Footer>
       </div>

@@ -32,6 +32,7 @@ export const Register = () => {
     useEffect(() => {
         if (isAuthenticated) {
             navigate("/home")
+            alert.success("User create successfully")
         }
         if (error) {
             dispatch(clearErrors)

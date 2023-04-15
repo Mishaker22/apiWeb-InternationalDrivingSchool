@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import logo from '../../images/logo_completo.png'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { useAlert } from 'react-alert'
 import { logout } from '../../actions/user_actions'
 
@@ -71,7 +71,7 @@ export const NavBar = () => {
                                             <li><a className="dropdown-item" href="/admin/dashboard">Adm. Servicios</a></li>
                                         )}
 
-                                        <li><a className="dropdown-item" href="#">Preinscripciones</a></li>
+                                        <li><a className="dropdown-item" href="/MyPreinscriptions">Preinscripciones</a></li>
                                         <li><a className="dropdown-item" href="/MyProfile">Profile</a></li>
                                         <li><NavLink className="dropdown-item" to={"/"} onClick={logoutHandler}>Log out</NavLink></li>
                                     </ul>

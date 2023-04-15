@@ -6,7 +6,7 @@ import MetaData from '../layout/metadata'
 import Sidebar from './sidebar'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getServices } from '../../actions/services_actions'
+import { deleteService, getServices } from '../../actions/services_actions'
 import { useAlert } from 'react-alert'
 
 export const ServiceList = () => {
@@ -15,6 +15,15 @@ export const ServiceList = () => {
     const dispatch = useDispatch();
 
     const { loading, services, error } = useSelector(state => state.services)
+
+    const deleteProductHandler = (id) => {
+        const response = window.confirm("Estas seguro de querer eliminar este producto?")
+        if (response) {
+            dispatch(deleteService(id))
+            window.location.reload(false)
+            alert.success("Servicio eliminado correctamente")
+        }
+    }
 
     useEffect(() => {
         if (error) {
@@ -55,12 +64,13 @@ export const ServiceList = () => {
                 descripcion: service.descripcion,
                 productos: service.producto.length,
                 acciones: <Fragment>
-                    <Link to={`/service/${service._id}`} className="btn btn-primary  ">
+                    <Link to={`/service/${service._id}`} className="btn btn-primary py-1 px-2">
                         <i class="bi bi-eye"></i>
-                    </Link><Link to={`#`} className="btn btn-info">
+                    </Link>
+                    <Link to={`/admin/updateService/${service._id}`} className="btn btn-info py-1 px-2">
                         <i class="bi bi-pen"></i>
                     </Link>
-                    <button className="btn btn-danger ">
+                    <button className="btn btn-danger py-1 px-2 ms-1" onClick={()=>deleteProductHandler(service._id)}>
                         <i class="bi bi-trash3"></i>
                     </button>
                 </Fragment>

@@ -72,7 +72,7 @@ export const Login = () => {
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 d-flex align-items-center backgroundMega">
-                                                <div class="text-dark px-3 py-4 p-md-5 mx-md-4">
+                                                <div class="textBlack px-3 py-4 p-md-5 mx-md-4">
                                                     <div class="text-center">
                                                         <img className='img-fluid' src={logo} alt="International Academy"></img>
                                                         <h4 class="mt-1 mb-5 pb-1">Building safe drivers</h4>

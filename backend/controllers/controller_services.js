@@ -4,10 +4,10 @@ const ErrorHandler = require('../utils/error_handler');
 //const fetch =(url)=>import('node-fetch').then(({default:fetch})=>fetch(url));
 
 //Ver la lista de productos
-exports.getServices = catchAsyncErrors( async(req, res, next) => {
+exports.getServices = catchAsyncErrors(async (req, res, next) => {
     const services = await servicio.find();
     if (!services) {
-        return next(new ErrorHandler("Servicio No encontrado", 404)) 
+        return next(new ErrorHandler("Servicio No encontrado", 404))
     }
     res.status(200).json({
         succes: true,
@@ -17,7 +17,7 @@ exports.getServices = catchAsyncErrors( async(req, res, next) => {
 })
 //Buscar un servicio por id
 exports.getServiceById = catchAsyncErrors(async (req, res, next) => {
-    const service =  await servicio.findById(req.params.id)
+    const service = await servicio.findById(req.params.id)
     if (!service) {
         return next(new ErrorHandler("Servicio No encontrado", 404))
 
@@ -27,17 +27,90 @@ exports.getServiceById = catchAsyncErrors(async (req, res, next) => {
         service
     })
 })
+// buscar por producto por id
+exports.getProductById = catchAsyncErrors(async (req, res, next) => {
+    const serviceCategorie = await servicio.findById(req.query.idServicio)
+
+    //compara con el id que llega por query
+    const producto = serviceCategorie.producto.filter(p =>
+        p._id.toString() === req.query.idProduct.toString()
+    );
+
+    res.status(200).json({
+        succes: true,
+        message: "Detalles del producto",
+        producto
+    })
+})
 //Agregar servicio nuevo
-exports.newService = catchAsyncErrors( async (req, res, next) => {
-    req.body.user=req.user.id;
+exports.newService = catchAsyncErrors(async (req, res, next) => {
+    req.body.user = req.user.id;
     const service = await servicio.create(req.body);
     res.status(201).json({
         succes: true,
         service
     })
 })
+//Crear o un producto dentro de la categoria servicios
+exports.createProductCategories = catchAsyncErrors(async (req, res, next) => {
+    const { public_id, descripcion_producto, precio, idServicio } = req.body;
+
+    const producto = {
+        public_id,
+        descripcion_producto,
+        precio,
+    }
+    const serviceCategorie = await servicio.findById(idServicio)
+
+    serviceCategorie.producto.push(producto)
+    await serviceCategorie.save({ validateBeforeSave: false })
+
+    res.status(200).json({
+        succes: true,
+        message: "Se ha guardado un producto como subcategoria de servicios"
+    })
+
+})
+//ver los productos creados de una categoria de servicio
+exports.getProductCategories = catchAsyncErrors(async (req, res, next) => {
+    const serviceCategorie = await servicio.findById(req.query.idServicio)
+
+    res.status(200).json({
+        success: true,
+        producto: serviceCategorie.producto
+    })
+
+})
+//Eliminar un producto de una categoria
+exports.deleteProductoCategories = catchAsyncErrors(async (req, res, next) => {
+    const serviceCategorie = await servicio.findById(req.query.idServicio)
+
+    //todas los productos se listan menos el que quiero borrar
+    const producto = serviceCategorie.producto.filter(p =>
+        p._id.toString() !== req.query.idProduct.toString()
+    );
+    const numProductos = producto.length;
+
+    await servicio.findByIdAndUpdate(req.query.idServicio, {
+        producto,
+        numProductos
+    }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+
+
+    console.log(producto)
+
+    res.status(200).json({
+        success: true,
+        message: "producto eliminado correctamente"
+    })
+
+})
 //Actualizar un servicio
-exports.updateService = catchAsyncErrors( async (req, res,next) => {
+exports.updateService = catchAsyncErrors(async (req, res, next) => {
     let service = await servicio.findById(req.params.id)
     if (!service) {
         return next(new ErrorHandler("Servicio No encontrado", 404))
@@ -53,7 +126,7 @@ exports.updateService = catchAsyncErrors( async (req, res,next) => {
     })
 })
 //Eliminar servicio
-exports.deleteService = catchAsyncErrors( async (req, res) => {
+exports.deleteService = catchAsyncErrors(async (req, res) => {
     const service = await servicio.findById(req.params.id)
     if (!service) {
         return next(new ErrorHandler("Servicio No encontrado", 404))
