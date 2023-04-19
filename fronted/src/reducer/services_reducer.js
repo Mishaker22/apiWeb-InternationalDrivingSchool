@@ -16,19 +16,19 @@ import {
     NEW_PRODUCT_SUBCATEGORIE_REQUEST,
     NEW_PRODUCT_SUBCATEGORIE_SUCCESS,
     NEW_PRODUCT_SUBCATEGORIE_FAIL,
+    NEW_PRODUCT_SUBCATEGORIE_RESET,
     UPDATE_SERVICE_REQUEST,
     UPDATE_SERVICE_SUCCESS,
     UPDATE_SERVICE_FAIL,
     UPDATE_SERVICE_RESET,
-    NEW_PRODUCT_SUBCATEGORIE_RESET,
-    UPDATE_SUBCATEGORIE_REQUEST,
     DELETE_SUBCATEGORIE_REQUEST,
     DELETE_SUBCATEGORIE_SUCCESS,
+    DELETE_SUBCATEGORIE_FAIL,
+    DELETE_SUBCATEGORIE_RESET,
+    UPDATE_SUBCATEGORIE_REQUEST,
     UPDATE_SUBCATEGORIE_SUCCESS,
     UPDATE_SUBCATEGORIE_FAIL,
-    DELETE_SUBCATEGORIE_FAIL,
     UPDATE_SUBCATEGORIE_RESET,
-    DELETE_SUBCATEGORIE_RESET,
     GET_SUBCATEGORIE_REQUEST,
     GET_SUBCATEGORIE_SUCCESS,
     GET_SUBCATEGORIE_FAIL,
@@ -36,6 +36,7 @@ import {
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL
 } from "../constants/services_constant";
+import { PROFILE_UPDATE_FAIL } from "../constants/user_constant";
 
 export const servicesReducer = (state = { services: [] }, action) => {
     switch (action.type) {
@@ -101,16 +102,19 @@ export const productDetailsReducer = (state = { producto: {} }, action) => {
                 ...state,
                 loading: true
             }
+
         case PRODUCT_DETAILS_SUCCESS:
             return {
                 loading: false,
-                producto: action.payload.producto
+                producto: action.payload
             }
-        case PRODUCT_DETAILS_FAIL:
+
+        case PROFILE_UPDATE_FAIL:
             return {
                 ...state,
                 error: action.payload
             }
+
         case CLEAR_ERRORS:
             return {
                 ...state,
@@ -118,7 +122,8 @@ export const productDetailsReducer = (state = { producto: {} }, action) => {
             }
 
         default:
-            return state;
+            return state
+    
     }
 }
 export const newServiceReducer = (state = { service: {} }, action) => {

@@ -31,7 +31,14 @@ export const Sidebar = () => {
                         <Link to={"/admin/listPreinscriptions"}><i class="bi bi-clipboard-check-fill"></i> Preinscripciones</Link>
                     </li>
                     <li className='mb-3 ms-2'>
-                        <Link to={"/"}><i class="bi bi-people"></i> Usuarios</Link>
+                        {/*Botones de servicios*/}
+                        <a href='#usersSubMenu' data-bs-toggle="collapse" aria-expanded="false" className='dropdown-toggle'>
+                            <i class="bi bi-person-circle"></i> Usuarios</a>
+                        <ul className='collapse list-unstyled' id='usersSubMenu'>
+                            <li className='  mt-3'>
+                                <Link to={"/admin/listUsers"} className="text-success"><i class="bi bi-people"></i> Gestionar Usuarios </Link>
+                            </li>
+                        </ul>
                     </li>
                     <li className='mb-3 ms-2'>
                         <Link to={"/"} className="text-white"><i class="bi bi-currency-dollar"></i> Agregar ingresos </Link>

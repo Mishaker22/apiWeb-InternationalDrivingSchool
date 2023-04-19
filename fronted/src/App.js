@@ -26,6 +26,9 @@ import { NewService } from './components/admin/service_new';
 import { UpdateService } from './components/admin/updateService';
 import { Subcategorie_new } from './components/admin/subcategorie_new';
 import { UpdateProduct } from './components/admin/updateProduct';
+import { UserList } from './components/admin/UserList';
+import { UpdateUser } from './components/admin/updateUser';
+import { Preinscription } from './components/preinscriptions/preinscription';
 
 
 function App() {
@@ -51,6 +54,8 @@ function App() {
           <Route path='/MyProfile/updatePassword' element={<UpdatePassword></UpdatePassword>}></Route>
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path='/resetPassword/:token' element={<ResetPassword></ResetPassword>}></Route>
+          <Route path='/preinscription/:id' element={<Preinscription></Preinscription>}></Route>
+
           {/*Rutas Protegida*/}
           <Route path='/admin/dashboard' element={<ProtectedRoutes isAdmin={true}><Dashboard></Dashboard></ProtectedRoutes>}></Route>
           <Route path='/admin/listServices' element={<ProtectedRoutes isAdmin={true}><ServiceList></ServiceList></ProtectedRoutes>}></Route>
@@ -58,7 +63,9 @@ function App() {
           <Route path='/admin/newService' element={<ProtectedRoutes isAdmin={true}><NewService></NewService></ProtectedRoutes>}></Route>
           <Route path='/admin/updateService/:id'element={<ProtectedRoutes isAdmin={true}><UpdateService></UpdateService></ProtectedRoutes>}></Route>
           <Route path='/admin/createSubcategorie/:id'element={<ProtectedRoutes isAdmin={true}><Subcategorie_new></Subcategorie_new></ProtectedRoutes>}></Route>
-          <Route path='/admin/updateProduct/:id'element={<ProtectedRoutes isAdmin={true}><UpdateProduct></UpdateProduct></ProtectedRoutes>}></Route>
+          <Route path='/admin/updateProduct'element={<ProtectedRoutes isAdmin={true}><UpdateProduct></UpdateProduct></ProtectedRoutes>}></Route>
+          <Route path='/admin/listUsers' element={<ProtectedRoutes isAdmin={true}><UserList></UserList></ProtectedRoutes>}></Route>
+          <Route path='/admin/updateUser/:id' element={<ProtectedRoutes isAdmin={true}><UpdateUser></UpdateUser></ProtectedRoutes>}></Route>
         </Routes>
         <Footer></Footer>
       </div>

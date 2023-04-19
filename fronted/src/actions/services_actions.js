@@ -57,6 +57,7 @@ export const getServices = () => async (dispatch) => {
 export const getServiceDetails = (id) => async (dispatch) => {
     try {
         dispatch({ type: SERVICE_DETAILS_REQUEST })
+
         const { data } = await axios.get(`/api/services/get/${id}`)
         //si todo sale bien
         dispatch({
@@ -75,7 +76,9 @@ export const getServiceDetails = (id) => async (dispatch) => {
 export const getProductDetails = (idServicio, idProduct) => async (dispatch) => {
     try {
         dispatch({ type: PRODUCT_DETAILS_REQUEST })
+        
         const { data } = await axios.get(`/api/services/getProduct?idServicio=${idServicio}&idProduct=${idProduct}`)
+        
         //si todo sale bien
         dispatch({
             type: PRODUCT_DETAILS_SUCCESS,
@@ -191,6 +194,25 @@ export const updateService =(id, serviceData)=> async (dispatch)=> {
         })
     }
 }
+//UPDATE PRODUCTO (admin)
+export const updateProduct =(idServicio, idProduct, productData)=> async (dispatch)=> {
+    try {
+        dispatch ({type: UPDATE_SUBCATEGORIE_REQUEST})
+        const config={
+            headers:{'Content-Type': 'application/json'}
+        }
+        const {data} =await axios.put(`/api/services/updateProduct?idServicio=${idServicio}&idProduct=${idProduct}`, productData, config)
+        dispatch({
+            type: UPDATE_SUBCATEGORIE_SUCCESS,
+            payload: data.success
+        })
+    } catch (error) {
+        dispatch({
+            type: UPDATE_SUBCATEGORIE_FAIL, 
+            payload: error.response.data.message
+        })
+    }
+}
 // ELIMINAR UN PRODUCTO (ADMIN)
 export const deleteProduct =(servicioId, idProduct)=> async (dispatch)=>{
     try {
@@ -208,25 +230,7 @@ export const deleteProduct =(servicioId, idProduct)=> async (dispatch)=>{
         })
     }
 }
-//UPDATE PRODUCTO (admin)
-export const updateProduct =(id, productData)=> async (dispatch)=> {
-    try {
-        dispatch ({type: UPDATE_SUBCATEGORIE_REQUEST})
-        const config={
-            headers:{'Content-Type': 'application/json'}
-        }
-        const {data} =await axios.put(`/api/services/get/${id}`, productData, config)
-        dispatch({
-            type: UPDATE_SUBCATEGORIE_SUCCESS,
-            payload: data.success
-        })
-    } catch (error) {
-        dispatch({
-            type: UPDATE_SUBCATEGORIE_FAIL, 
-            payload: error.response.data.message
-        })
-    }
-}
+
 //clear error
 export const clearErrors = () => async (dispatch) => {
     dispatch({
