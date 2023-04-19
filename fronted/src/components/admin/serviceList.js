@@ -6,7 +6,7 @@ import MetaData from '../layout/metadata'
 import Sidebar from './sidebar'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteService, getServices } from '../../actions/services_actions'
+import { clearErrors, deleteService, getServices } from '../../actions/services_actions'
 import { useAlert } from 'react-alert'
 
 export const ServiceList = () => {
@@ -28,6 +28,7 @@ export const ServiceList = () => {
     useEffect(() => {
         if (error) {
             return alert.error(error)
+            dispatch(clearErrors)
         }
         dispatch(getServices());
 

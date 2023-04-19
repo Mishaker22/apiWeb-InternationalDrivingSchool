@@ -76,7 +76,7 @@ export const UpdateService = () => {
     }, [dispatch, success, isDeleted, isUpdated, getProductsError, alert, error, updateError, deleteError, service, serviceId])
 
     const deleteProductHandler = (idProduct) => {
-        
+
         const response = window.confirm("Estas seguro de querer eliminar este producto?")
         if (response) {
             dispatch(deleteProduct(serviceId, idProduct))
@@ -127,7 +127,7 @@ export const UpdateService = () => {
                 precio: p.precio,
                 acciones:
                     <Fragment>
-                        <Link to={`/admin/updateProduct/${p._id}`} className="btn btn-info py-1 px-1">
+                        <Link to={`/admin/updateProduct?idServicio=${service._id}&idProduct=${p._id}`} className="btn btn-info py-1 px-2">
                             <i class="bi bi-pen"></i>
                         </Link>
                         <button className="btn btn-danger py-1 px-1" onClick={() => deleteProductHandler(p._id)}>

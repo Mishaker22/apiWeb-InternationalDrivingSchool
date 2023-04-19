@@ -125,6 +125,42 @@ exports.updateService = catchAsyncErrors(async (req, res, next) => {
         service
     })
 })
+//Actualizar un Producto
+exports.updateProduct = catchAsyncErrors(async (req, res, next) => {
+    let serviceCategorie = await servicio.findById(req.query.idServicio) //busco el servicio con el id del obj
+    const { public_id, descripcion_producto, precio, idServicio } = req.body //traigo el obj
+
+    const producto = {
+        public_id: public_id,
+        descripcion_producto: descripcion_producto,
+        precio: precio,
+        idServicio: idServicio
+    }
+
+    //comparo el id del producto de la lista con el que llega por el query
+    const product = serviceCategorie.producto.filter(p =>
+        p._id.toString() === req.query.idProduct.toString(),
+    );
+
+    if (product) {
+
+        product.descripcion_producto = descripcion_producto,
+            product.precio = precio
+    }
+
+    await servicio.findByIdAndUpdate(req.query.idServicio,{
+        producto
+    },
+    {
+        new: true,
+        runValidators: true
+    });
+    res.status(200).json({
+        succes: true,
+        message: "Producto actualizado correctamente",
+        producto
+    })
+})
 //Eliminar servicio
 exports.deleteService = catchAsyncErrors(async (req, res) => {
     const service = await servicio.findById(req.params.id)

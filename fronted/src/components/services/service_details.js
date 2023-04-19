@@ -8,6 +8,8 @@ import { useAlert } from 'react-alert'
 export const ServiceDetails = () => {
 
   const { loading, service, error } = useSelector(state => state.serviceDetails)
+  const { user } = useSelector(state => state.auth)
+
   const { id } = useParams();
   const dispatch = useDispatch();
   const alert = useAlert();
@@ -47,9 +49,14 @@ export const ServiceDetails = () => {
                               </div>
                             </div>
                             <div className='linkServices'>
-                              <Link to={`/preinscription`} id="button" type='button'
-                                className="btn btn-outline-danger ms-10 text-white cafe"> Book Now
-                                <i class="bi bi-clipboard-check"></i></Link>
+                              {user ?
+                                <Link to={`/preinscription/${service._id}`} id="button" type='button'
+                                  className="btn btn-outline-danger ms-10 text-white cafe"> Book Now
+                                  <i class="bi bi-clipboard-check"></i></Link>
+                                :
+                                <div className="alert alert-danger mt-5" type="alert"> You must log in to pre-register </div>
+                              }
+
                             </div>
                           </div>
                         </div>
