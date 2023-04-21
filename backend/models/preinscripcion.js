@@ -21,25 +21,24 @@ const preinscripcionSchema= mongoose.Schema({
         required: true,
         ref: "auth"
     },
-    service:[{
-        nombre:{
-            type:String,
-            required:true
-        }, 
-        precio:{
-            type:Number,
-            required: true
-        },
-        producto:{
-            type:mongoose.Schema.Types.ObjectId,
-            required: true,
-            ref:"model_service"
-        }
-    }], 
+    service:{
+        type:mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref:"model_service"
+    }, 
+    producto:{
+        type:mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref:"model_service"
+    },
     estado:{
         type:String,
         required:true,
         default: "Sin reservar fecha"
+    },
+    fechaRegistro:{
+        type: Date,
+        default: Date.now
     }
 
 })

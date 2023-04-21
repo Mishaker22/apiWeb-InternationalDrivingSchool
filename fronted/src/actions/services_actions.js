@@ -59,6 +59,7 @@ export const getServiceDetails = (id) => async (dispatch) => {
         dispatch({ type: SERVICE_DETAILS_REQUEST })
 
         const { data } = await axios.get(`/api/services/get/${id}`)
+        
         //si todo sale bien
         dispatch({
             type: SERVICE_DETAILS_SUCCES,

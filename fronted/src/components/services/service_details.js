@@ -50,7 +50,7 @@ export const ServiceDetails = () => {
                             </div>
                             <div className='linkServices'>
                               {user ?
-                                <Link to={`/preinscription/${service._id}`} id="button" type='button'
+                                <Link to={`/preinscription/${id}/${product._id}`} id="button" type='button'
                                   className="btn btn-outline-danger ms-10 text-white cafe"> Book Now
                                   <i class="bi bi-clipboard-check"></i></Link>
                                 :

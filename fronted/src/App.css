@@ -198,6 +198,13 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.backgroundPre{
+  background-image: url("./images/fondopre.jpg");
+  width: 100%;
+  height: 110vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .backgroundForm {
   background-image: url("./images/fondo_formu.jpeg");

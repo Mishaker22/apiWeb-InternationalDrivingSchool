@@ -4,12 +4,13 @@ const ErrorHandler = require("../utils/error_handler");
 const APIFeatures = require("../utils/api_features");
 
 //crear nueva preinscripcion
-exports.newReservation= catchAsyncErrors(async(req,res,next)=>{
+exports.newPrinscription= catchAsyncErrors(async(req,res,next)=>{
     const {
         numeroId,
         direccion,
         telefono,
         service,
+        producto,
     }=req.body;
 
     const order=await preinscripcion.create({
@@ -17,6 +18,7 @@ exports.newReservation= catchAsyncErrors(async(req,res,next)=>{
         direccion,
         telefono,
         service,
+        producto,
         user: req.user._id
     })
     res.status(201).json({
@@ -25,16 +27,17 @@ exports.newReservation= catchAsyncErrors(async(req,res,next)=>{
     })
 })
 //ver una orden
-exports.getOneReservation=catchAsyncErrors(async(req,res,next)=>{
-    const order=await preinscripcion.findById(req.params.id)
+exports.getOnePreinscriptions=catchAsyncErrors(async(req,res,next)=>{
+    const preinscription=await preinscripcion.findById(req.params.id)
 
-    if(!order)
+    if(!preinscription)
     {
         return next(new ErrorHandler("No escontramos una orden on ese Id",404))
     }
     res.status(200).json({
         succes:true,
-        order
+        message: "A continuacion puede ver la informacion de tu servicio",
+        preinscription
     })
 })
 
@@ -66,7 +69,7 @@ exports.updateOrder=catchAsyncErrors(async(req,res,next)=>{
     if (!order) {
         return next (new ErrorHandler("Orden no encontrada",404))
     }
-    if (order.estado==="PAGADO") {
+    if (order.estado==="PAGADO" ) {
         return next (new ErrorHandler("Ya no se puede modificar esta orden"))
     }
     order.estado=req.body.estado;
