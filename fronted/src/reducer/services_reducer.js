@@ -36,8 +36,7 @@ import {
     PRODUCT_DETAILS_SUCCESS,
     PRODUCT_DETAILS_FAIL
 } from "../constants/services_constant";
-import { PROFILE_UPDATE_FAIL } from "../constants/user_constant";
-
+//carga todos los servicios
 export const servicesReducer = (state = { services: [] }, action) => {
     switch (action.type) {
         case ALL_SERVICES_REQUEST:
@@ -109,7 +108,7 @@ export const productDetailsReducer = (state = { producto: {} }, action) => {
                 producto: action.payload
             }
 
-        case PROFILE_UPDATE_FAIL:
+        case PRODUCT_DETAILS_FAIL:
             return {
                 ...state,
                 error: action.payload
@@ -126,6 +125,7 @@ export const productDetailsReducer = (state = { producto: {} }, action) => {
     
     }
 }
+// Crea un servicio
 export const newServiceReducer = (state = { service: {} }, action) => {
     switch (action.type) {
         case CREATE_SERVICE_REQUEST:
@@ -158,6 +158,7 @@ export const newServiceReducer = (state = { service: {} }, action) => {
             return state
     }
 }
+//REDUCER CREAR UN PRODUCTO
 export const newProductReducer = (state = {}, action) => {
     switch (action.type) {
 
@@ -195,7 +196,7 @@ export const newProductReducer = (state = {}, action) => {
             return state
     }
 }
-
+//ELIMINAR Y ACTUALIZAR 
 export const serviceReducer = (state = {}, action) => {
     switch (action.type) {
 
@@ -251,6 +252,7 @@ export const serviceReducer = (state = {}, action) => {
             return state;
     }
 }
+//Trae todos los productos
 export const getProductsReducer = (state = { producto: [] }, action) => {
     switch (action.type) {
 

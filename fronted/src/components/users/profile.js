@@ -17,7 +17,7 @@ export const Profile = () => {
                             <h2 className='quantify text-white text-center '>PROFILE</h2>
                             <div className='row d-flex justify-content-center align-items-center mt-5 '>
                                 <div class="col-9 ,mb-5 ">
-                                    <div class="card rounded-3" >
+                                    <div class="card rounded-3 mb-4" >
                                         <div class="row g-0">
                                             <div class="col-md-4 colorProfileCard text-center text-white">
                                                 <div className=' row d-flex justify-content-center align-items-center'>

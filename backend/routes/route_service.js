@@ -16,7 +16,7 @@ router.route('/get/:id').put(isAuthenticatedUser,authorizeRoles("admin"),updateS
 router.route('/updateProduct').put(isAuthenticatedUser,authorizeRoles("admin"),updateProduct)
 router.route('/delete/:id').delete(isAuthenticatedUser,authorizeRoles("admin"),deleteService)
 router.route('/newProduct').post(createProductCategories)
-router.route('/getProducts').get(isAuthenticatedUser,authorizeRoles("admin"),getProductCategories)
+router.route('/getProducts').get(isAuthenticatedUser,getProductCategories)
 router.route('/getProduct').get(isAuthenticatedUser, authorizeRoles("admin"), getProductById)
 router.route('/deleteProduct').delete(isAuthenticatedUser,authorizeRoles("admin"),deleteProductoCategories)
 

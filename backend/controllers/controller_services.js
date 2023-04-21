@@ -18,6 +18,7 @@ exports.getServices = catchAsyncErrors(async (req, res, next) => {
 //Buscar un servicio por id
 exports.getServiceById = catchAsyncErrors(async (req, res, next) => {
     const service = await servicio.findById(req.params.id)
+    
     if (!service) {
         return next(new ErrorHandler("Servicio No encontrado", 404))
 

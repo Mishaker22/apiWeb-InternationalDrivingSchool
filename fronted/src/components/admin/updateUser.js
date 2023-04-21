@@ -135,7 +135,7 @@ export const UpdateUser = () => {
                                                             <select id='genero_field' className='form-control' name='genero'
                                                                 value={genero} onChange={(e) => setGenero(e.target.value)} >
                                                                 {generos.map(genero => (
-                                                                    <option key={genero} value={genero}>{genero} </option>
+                                                                    <option value={genero} selected> {genero} </option>
                                                                 ))}
                                                             </select>
                                                         </div>
@@ -144,7 +144,7 @@ export const UpdateUser = () => {
                                                             <select id='role_field' className='form-control' name='role'
                                                                 value={role} onChange={(e) => setRole(e.target.value)} >
                                                                 {roles.map(role => (
-                                                                    <option key={role} value={role}>{role} </option>
+                                                                    <option value={role} selected> {role} </option>
                                                                 ))}
                                                             </select>
                                                         </div>

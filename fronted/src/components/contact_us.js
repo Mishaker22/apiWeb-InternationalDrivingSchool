@@ -18,7 +18,7 @@ export const Contact_us = () => {
                 </div>
                 <div className="row d-flex justify-content-center">
                     <div className='col-6 mt-4'>
-                        <div className="card rounded-3 m-1 text-black fondoFormu">
+                        <div className="card rounded-3 m-1 text-black fondoFormu mb-5">
                             <div className='row g-0'>
                                 <div className='col-md-4'>
                                     <div class="card-body">

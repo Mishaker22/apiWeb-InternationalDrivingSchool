@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MDBDataTable } from 'mdbreact'
 
@@ -6,8 +6,10 @@ import MetaData from '../layout/metadata'
 import Sidebar from './sidebar'
 
 import { useDispatch, useSelector } from 'react-redux'
-import { getAdminOrders } from '../../actions/preinscriptions_actions'
+import { getPreinscriptions } from '../../actions/preinscriptions_actions'
 import { useAlert } from 'react-alert'
+import { getProducts } from '../../actions/services_actions'
+import { deletePreinscription } from '../../actions/preinscriptions_actions'
 
 
 export const PreinscriptionList = () => {
@@ -16,36 +18,48 @@ export const PreinscriptionList = () => {
     const dispatch = useDispatch();
 
     const { loading, preinscriptions, error } = useSelector(state => state.preinscriptions)
+    const { producto, error: errorProduct } = useSelector(state => state.getProducts);
+
+    const deleteOrderHandler = (id) => {
+        const response = window.confirm("Estas seguro de querer eliminar esta preinscripcion?")
+        if (response) {
+            dispatch(deletePreinscription(id))
+            window.location.reload(false)
+            alert.success("Preinscripcion eliminada correctamente")
+        }
+    }
 
     useEffect(() => {
         if (error) {
             return alert.error(error)
         }
-        dispatch(getAdminOrders());
+        if (errorProduct) {
+            return alert.error(error)
+        }
 
-    }, [dispatch, alert, error])
+        dispatch(getPreinscriptions());
+
+
+    }, [dispatch, alert, error, errorProduct])
 
     const setPreinscriptions = () => {
         const data = {
             columns: [
                 {
-                    label: "Num Id Cliente",
-                    field: "numeroId",
+                    label: "Fecha",
+                    field: "fecha",
                     sort: "asc"
                 },
                 {
                     label: "Id Orden",
                     field: "id",
                     sort: "asc"
-                },
+                },  
                 {
-                    label: "Id Servicio",
-                    field: "service",
-                },
-                {
-                    label: "Precio",
-                    field: "precio",
-                },
+                    label: "Id Usuario",
+                    field: "numeroId",
+                    sort: "asc"
+                },  
                 {
                     label: "Estado",
                     field: "estado",
@@ -59,27 +73,17 @@ export const PreinscriptionList = () => {
         }
 
         preinscriptions.forEach(order => {
-
-            var id_producto;
-            var precio_producto;
-            order.service.forEach(s => {
-                precio_producto = s.precio
-                id_producto = s._id
-            })
-
+            var fecha= new Date(order.fechaRegistro).toLocaleDateString()
             data.rows.push({
-                numeroId: order.numeroId,
+                fecha: fecha,
                 id: order._id,
-                service: id_producto,
-                precio: precio_producto,
+                numeroId: order.numeroId,
                 estado: order.estado,
                 acciones: <Fragment>
-                    <Link to={`/preinscription/${order._id}`} className="btn btn-primary  ">
-                        <i class="bi bi-eye"></i>
-                    </Link><Link to={`#`} className="btn btn-info">
-                        <i class="bi bi-pen"></i>
+                    <Link to={`/admin/preinscriptionDetails?idOrder=${order._id}&idServicio=${order.service}&idProduct=${order.producto}&userId=${order.user}`} className="btn btn-primary py-1 px-2 ">
+                        <i class="bi bi-eye "></i>
                     </Link>
-                    <button className="btn btn-danger ">
+                    <button className="btn btn-danger py-1 px-2 ms-1" onClick={()=>deleteOrderHandler(order._id)}>
                         <i class="bi bi-trash3"></i>
                     </button>
                 </Fragment>
@@ -88,8 +92,6 @@ export const PreinscriptionList = () => {
 
         return data;
     }
-
-
 
     return (
         <Fragment>

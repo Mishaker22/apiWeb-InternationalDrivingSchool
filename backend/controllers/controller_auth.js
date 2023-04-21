@@ -239,7 +239,7 @@ exports.updateUser = catchAsyncErrors(async (req, res, next) => {
         nombre: req.body.nombre,
         apellido: req.body.apellido,
         email: req.body.email,
-        genero: req.body.email,
+        genero: req.body.genero,
         role: req.body.role
     }
     const user = await User.findByIdAndUpdate(req.params.id, nuevaData, {
