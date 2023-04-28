@@ -75,7 +75,6 @@ export const MyOrder = () => {
     })
     return data;
   }
-
   return (
     <Fragment>
       <MetaData title={"MY ORDERS"}></MetaData>
