@@ -16,7 +16,13 @@ import {
     UPDATE_ORDER_REQUEST,
     UPDATE_ORDER_SUCCESS,
     UPDATE_ORDER_FAIL,
-    UPDATE_ORDER_RESET
+    UPDATE_ORDER_RESET,
+    MY_ORDERS_REQUEST,
+    MY_ORDERS_SUCCESS,
+    MY_ORDERS_FAIL,
+    CANCEL_ORDER_RESET,
+    CANCEL_ORDER_SUCCESS,
+    CANCEL_ORDER_FAIL
 } from "../constants/preinscription_constant"
 
 //Todas las preinscripciones
@@ -117,6 +123,7 @@ export const preinscriptionReducer = (state = {}, action) => {
 
         case DELETE_PREINSCRIPTION_REQUEST:
         case UPDATE_ORDER_REQUEST:
+        case CANCEL_ORDER_RESET:
             return {
                 ...state,
                 loading: true
@@ -128,6 +135,7 @@ export const preinscriptionReducer = (state = {}, action) => {
                 isDelated: true
             }
         case UPDATE_ORDER_SUCCESS:
+        case CANCEL_ORDER_SUCCESS:
             return {
                 ...state,
                 loading: false,
@@ -135,11 +143,13 @@ export const preinscriptionReducer = (state = {}, action) => {
             }
         case DELETE_PREINSCRIPTION_FAIL:
         case UPDATE_ORDER_FAIL:
+        case CANCEL_ORDER_FAIL:
             return {
                 ...state,
                 error: action.payload
             }
         case UPDATE_ORDER_RESET:
+        case CANCEL_ORDER_RESET:
             return {
                 ...state,
                 isUpdated: false
@@ -147,6 +157,37 @@ export const preinscriptionReducer = (state = {}, action) => {
         case CLEAR_ERRORS:
             return {
                 error: null
+            }
+
+        default:
+            return state;
+    }
+}
+// Ver mis Ordenes
+export const myOrdersReducer = (state = {orders:[]}, action)=>{
+    switch (action.type){
+
+        case MY_ORDERS_REQUEST:
+            return{
+                ...state,
+                loading: true
+            }
+        case MY_ORDERS_SUCCESS:
+            return{
+                ...state,
+                loading:false,
+                orders: action.payload
+            }
+        case MY_ORDERS_FAIL:
+            return{
+                ...state,
+                loading: false,
+                error: action.payload
+            }
+        case CLEAR_ERRORS:
+            return{
+                ...state,
+                error:null
             }
 
         default:

@@ -5,9 +5,6 @@ import{
     ALL_PREINSCRIPTIONS_SUCCES,
     ALL_PREINSCRIPTIONS_FAIL,
     CLEAR_ERRORS,
-    ADMIN_ORDERS_REQUEST,
-    ADMIN_ORDERS_SUCCESS,
-    ADMIN_ORDERS_FAIL,
     CREATE_PREINSCRIPTION_REQUEST,
     CREATE_PREINSCRIPTION_SUCCESS,
     CREATE_PREINSCRIPTION_FAIL,
@@ -19,7 +16,13 @@ import{
     DELETE_PREINSCRIPTION_FAIL,
     UPDATE_ORDER_REQUEST,
     UPDATE_ORDER_SUCCESS,
-    UPDATE_ORDER_FAIL
+    UPDATE_ORDER_FAIL,
+    MY_ORDERS_REQUEST,
+    MY_ORDERS_SUCCESS,
+    MY_ORDERS_FAIL,
+    CANCEL_ORDER_REQUEST,
+    CANCEL_ORDER_SUCCESS,
+    CANCEL_ORDER_FAIL
 } from '../constants/preinscription_constant';
 
 //dispatch como promesa
@@ -127,6 +130,51 @@ export const updateOrder = (id, orderData) => async (dispatch) => {
     } catch (error) {
         dispatch({
             type: UPDATE_ORDER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+//CANCELAR ORDEN POR USUARIO
+export const cancelOrder = (id, orderData) => async (dispatch) => {
+    try {
+
+        dispatch({ type: CANCEL_ORDER_REQUEST})
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        const { data } = await axios.put(`/api/preinscription/cancelOrder/${id}`, orderData, config)
+
+        dispatch({
+            type: CANCEL_ORDER_SUCCESS,
+            payload: data.success
+        })
+
+    } catch (error) {
+        dispatch({
+            type: CANCEL_ORDER_FAIL,
+            payload: error.response.data.message
+        })
+    }
+}
+export const myOrders = () => async (dispatch) => {
+    try {
+
+        dispatch({ type: MY_ORDERS_REQUEST });
+
+        const { data } = await axios.get('/api/preinscription/order/me')
+
+        dispatch({
+            type: MY_ORDERS_SUCCESS,
+            payload: data.orders
+        })
+
+    } catch (error) {
+        dispatch({
+            type: MY_ORDERS_FAIL,
             payload: error.response.data.message
         })
     }

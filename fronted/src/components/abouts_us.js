@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react'
 import { Bubbles } from './layout/bubbles';
 import MetaData from './layout/metadata';
-import cs_1 from '../images/carro_1.jpg'
-//import cs_2 from '../../images/carro_2.jpg'
-import cs_3 from '../images/carro_3.jpg'
-import cs_4 from '../images/carro_4.jpg'
+import cs_1 from '../images/carro_1.jpeg'
+import cs_0 from '../images/carro_0.jpeg'
+import cs_3 from '../images/carro_3.jpeg'
+import cs_4 from '../images/carro_4.jpeg'
 import cs_5 from '../images/carro_5.jpeg'
-import cs_6 from '../images/carro_6.jpeg'
+import cs_2 from '../images/carro_2.jpeg'
 
 
 export const AboutUs = () => {
@@ -21,15 +21,23 @@ export const AboutUs = () => {
             <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active " data-bs-interval="5000">
-                  <img src={cs_6} class="d-block w-100" alt="..."></img>
+                  <img src={cs_0} class="d-block w-100" alt="..."></img>
                 </div>
                 <div class="carousel-item ">
                   <img src={cs_1} class="d-block w-100" alt="..."></img>
                 </div>
                 <div class="carousel-item ">
+                  <img src={cs_2} class="d-block w-100" alt="..."></img>
+                </div>
+                <div class="carousel-item ">
+                  <img src={cs_3} class="d-block w-100" alt="..."></img>
+                </div>
+                <div class="carousel-item ">
+                  <img src={cs_4} class="d-block w-100" alt="..."></img>
+                </div>
+                <div class="carousel-item ">
                   <img src={cs_5} class="d-block w-100" alt="..."></img>
                 </div>
-
               </div>
               <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -41,7 +49,7 @@ export const AboutUs = () => {
               </button>
             </div>
           </div>
-          <div id='messageWelcome' className='col-12 col-md-5 '>
+          <div id='messageWelcome' className='col-12 col-md-5'>
             <div className='containMessage'>
               <h2>Welcome to International Driving School!</h2>
               <h4>Building safe drivers</h4>

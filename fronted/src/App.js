@@ -30,6 +30,9 @@ import { UserList } from './components/admin/UserList';
 import { UpdateUser } from './components/admin/updateUser';
 import { Preinscription } from './components/preinscriptions/preinscription';
 import { PreinscriptionDetails } from './components/admin/preinscriptionDetails';
+import { MyOrder } from './components/preinscriptions/myOrder';
+import { MyOrderDetails } from './components/preinscriptions/DetailsMyOrder';
+import { Employee } from './components/admin/employee';
 
 
 function App() {
@@ -52,6 +55,8 @@ function App() {
           <Route path='/register' element={<Register></Register>}></Route>
           <Route path='/MyProfile' element={<Profile></Profile>}></Route>
           <Route path='/MyProfile/update' element={<UpdateProfile></UpdateProfile>}></Route>
+          <Route path='/MyOrders' element={<MyOrder></MyOrder>}></Route>
+          <Route path='/order' element={<MyOrderDetails></MyOrderDetails>}></Route>
           <Route path='/MyProfile/updatePassword' element={<UpdatePassword></UpdatePassword>}></Route>
           <Route path='/forgotPassword' element={<ForgotPassword></ForgotPassword>}></Route>
           <Route path='/resetPassword/:token' element={<ResetPassword></ResetPassword>}></Route>
@@ -68,6 +73,7 @@ function App() {
           <Route path='/admin/listUsers' element={<ProtectedRoutes isAdmin={true}><UserList></UserList></ProtectedRoutes>}></Route>
           <Route path='/admin/updateUser/:id' element={<ProtectedRoutes isAdmin={true}><UpdateUser></UpdateUser></ProtectedRoutes>}></Route>
           <Route path='/admin/preinscriptionDetails' element={<ProtectedRoutes isAdmin={true}><PreinscriptionDetails></PreinscriptionDetails></ProtectedRoutes>}></Route>
+          <Route path='/admin/employees' element={<ProtectedRoutes isAdmin={true}><Employee></Employee></ProtectedRoutes>}></Route>
 
         </Routes>
         <Footer></Footer>

@@ -71,7 +71,7 @@ export const NavBar = () => {
                                             <li><a className="dropdown-item" href="/admin/dashboard">Adm. Servicios</a></li>
                                         )}
 
-                                        <li><a className="dropdown-item" href="/MyPreinscriptions">Preinscripciones</a></li>
+                                        <li><a className="dropdown-item" href="/MyOrders">Preinscripciones</a></li>
                                         <li><a className="dropdown-item" href="/MyProfile">Profile</a></li>
                                         <li><NavLink className="dropdown-item" to={"/"} onClick={logoutHandler}>Log out</NavLink></li>
                                     </ul>

@@ -5,7 +5,6 @@ const preinscripcionSchema= mongoose.Schema({
     numeroId:{
         type:Number ,
         required:[true, "por favor ingrese el numero de identificacion"],
-        unique: true,
     }, 
     direccion:{
         type:String ,
@@ -34,7 +33,7 @@ const preinscripcionSchema= mongoose.Schema({
     estado:{
         type:String,
         required:true,
-        default: "Sin reservar fecha"
+        default: "SIN RESERVAR FECHA"
     },
     fechaRegistro:{
         type: Date,
