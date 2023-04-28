@@ -95,7 +95,110 @@ body {
 .cardBody {
   background-color: rgb(0, 0, 0) !important;
 }
+.divEmployess{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background: url(./images/fondo_myorders.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+.containerEmployees{
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1rem 0;
+}
+.containerEmployees .cardEmployees{
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: rgb(255, 255, 255, 0.05);
+  margin: 20px;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
 
+}
+.containerEmployees .cardEmployees .contentEmployees{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0.5;
+  transition: 0.5s;
+}
+.containerEmployees .cardEmployees:hover .contentEmployees
+{
+  opacity: 1;
+}
+.containerEmployees .cardEmployees .contentEmployees .imgBxE{
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 10px solid rgba(0, 0, 0, 0.25);
+
+}
+.containerEmployees .cardEmployees .contentEmployees .imgBxE img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.containerEmployees .cardEmployees .contentEmployees .contentEmBx h5
+{
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 500;
+  font-size: 18px;
+  text-align: center;
+  margin: 20px 0 10px;
+  line-height: 1.1em;
+}
+.containerEmployees .cardEmployees .contentEmployees .contentEmBx h5 span{
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: initial;
+}
+.containerEmployees .cardEmployees .scie{
+  position: absolute;
+  bottom: 20px;
+  display: flex;
+
+}
+.containerEmployees .cardEmployees .scie h6{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: 500;
+  margin: 0 10px;
+  transform: translateY(16px);
+  transition: 0.5s;
+  opacity: 0;
+}
+.containerEmployees .cardEmployees:hover .scie h6
+{
+  transform: translateY(0px);
+  font-size: 13px;
+  font-weight: 700;
+  opacity: 1;
+  font-family: cafe;
+  background-color: wheat;
+}
 .cardContainer {
   background-color: rgba(255, 255, 255, 0.651);
 }
@@ -205,6 +308,13 @@ a {
   background-size: cover;
   background-repeat: no-repeat;
 }
+.backgroundOrder{
+  background-image: url("./images/fondo_myorders.jpg");
+  width: 100%;
+  height: 110vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
 .backgroundForm {
   background-image: url("./images/fondo_formu.jpeg");
@@ -240,7 +350,7 @@ a {
 }
 .containMessage
 {
-  padding: 3rem;
+  padding: 1rem;
 }
 .containMessage h2{
   color: #df0000;
@@ -274,7 +384,7 @@ a {
 }
 .containMessage:hover p
 {
-  margin-top: 2rem;
+  margin-top: 1rem;
   color: #f7f5f5;
   font-family: cafe;
   opacity: 1;

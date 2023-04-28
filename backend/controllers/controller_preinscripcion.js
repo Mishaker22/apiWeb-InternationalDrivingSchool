@@ -81,6 +81,24 @@ exports.updateOrder=catchAsyncErrors(async(req,res,next)=>{
         order
     })
 })
+exports.cancelOrder=catchAsyncErrors(async(req,res,next)=>{
+    const order=await preinscripcion.findById(req.params.id)
+
+    if (!order) {
+        return next (new ErrorHandler("Orden no encontrada",404))
+    }
+    if (order.estado==="CANCELADO" ) {
+        return next (new ErrorHandler("Ya no se puede modificar esta orden"))
+    }
+    order.estado=req.body.estado;
+    
+    await order.save()
+
+    res.status(200).json({
+        succes:true,
+        order
+    })
+})
 //Eliminar Orden (admin)
 exports.deleteOrder=catchAsyncErrors(async(req, res, next)=>{
     const order=await preinscripcion.findById(req.params.id)
